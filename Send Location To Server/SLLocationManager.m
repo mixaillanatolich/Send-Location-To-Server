@@ -16,8 +16,6 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
     UIBackgroundTaskIdentifier bgTask;
 }
 
-@property (nonatomic, strong) CLLocationManager *locationManager;
-
 @end
 
 @implementation SLLocationManager

@@ -7,12 +7,27 @@
 //
 
 #import "SLAppDelegate.h"
+#import "SLLocationManager.h"
+#import "SLAppDelegate.h"
 
 @implementation SLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    
+    if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
+        SLLocationManager *locationManager = [SLLocationManager sharedManager];
+        [locationManager setLocationUpdatedInBackground:^(CLLocation *location) {
+            UILocalNotification *notification = [[UILocalNotification alloc] init];
+            notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:15];
+            notification.alertBody = [NSString stringWithFormat:@"New location: %@", location];
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        }];
+        [locationManager startUpdatingLocation];
+    } else {
+        [SLLocationManager sharedManager];
+    }
+    
     return YES;
 }
 							

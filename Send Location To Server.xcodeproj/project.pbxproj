@@ -17,7 +17,6 @@
 		0527CC8A17663AB60065D19B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0527CC8917663AB60065D19B /* Default@2x.png */; };
 		0527CC8C17663AB60065D19B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0527CC8B17663AB60065D19B /* Default-568h@2x.png */; };
 		0527CC8F17663AB60065D19B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0527CC8D17663AB60065D19B /* MainStoryboard.storyboard */; };
-		0527CC9217663AB60065D19B /* SLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CC9117663AB60065D19B /* SLViewController.m */; };
 		0527CC9A17663AB60065D19B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CC9917663AB60065D19B /* SenTestingKit.framework */; };
 		0527CC9B17663AB60065D19B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CC7517663AB60065D19B /* UIKit.framework */; };
 		0527CC9C17663AB60065D19B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CC7717663AB60065D19B /* Foundation.framework */; };
@@ -32,6 +31,12 @@
 		0527CCCA17663E2F0065D19B /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCBF17663E2F0065D19B /* AFURLConnectionOperation.m */; };
 		0527CCCB17663E2F0065D19B /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCC117663E2F0065D19B /* AFXMLRequestOperation.m */; };
 		0527CCCC17663E2F0065D19B /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCC317663E2F0065D19B /* UIImageView+AFNetworking.m */; };
+		0527CCCE176645B00065D19B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CCCD176645B00065D19B /* CoreLocation.framework */; };
+		0527CCE91766465B0065D19B /* SLAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCE81766465B0065D19B /* SLAppManager.m */; };
+		0527CCEC176646740065D19B /* SLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCEB176646740065D19B /* SLLocationManager.m */; };
+		0527CCEF176650330065D19B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CCEE176650330065D19B /* CoreTelephony.framework */; };
+		0527CCF117665DF00065D19B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CCF017665DF00065D19B /* MapKit.framework */; };
+		0527CCF41766602D0065D19B /* SLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCF31766602D0065D19B /* SLMainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +64,6 @@
 		0527CC8917663AB60065D19B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0527CC8B17663AB60065D19B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0527CC8E17663AB60065D19B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		0527CC9017663AB60065D19B /* SLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLViewController.h; sourceTree = "<group>"; };
-		0527CC9117663AB60065D19B /* SLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLViewController.m; sourceTree = "<group>"; };
 		0527CC9817663AB60065D19B /* Send Location To ServerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Send Location To ServerTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0527CC9917663AB60065D19B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0527CCA117663AB60065D19B /* Send Location To ServerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Send Location To ServerTests-Info.plist"; sourceTree = "<group>"; };
@@ -86,6 +89,16 @@
 		0527CCC117663E2F0065D19B /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		0527CCC217663E2F0065D19B /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		0527CCC317663E2F0065D19B /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		0527CCCD176645B00065D19B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0527CCE71766465B0065D19B /* SLAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAppManager.h; sourceTree = "<group>"; };
+		0527CCE81766465B0065D19B /* SLAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAppManager.m; sourceTree = "<group>"; };
+		0527CCEA176646740065D19B /* SLLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLocationManager.h; sourceTree = "<group>"; };
+		0527CCEB176646740065D19B /* SLLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLocationManager.m; sourceTree = "<group>"; };
+		0527CCED17664F740065D19B /* CoreTelephony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTelephony.h; sourceTree = "<group>"; };
+		0527CCEE176650330065D19B /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		0527CCF017665DF00065D19B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0527CCF21766602D0065D19B /* SLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMainViewController.h; sourceTree = "<group>"; };
+		0527CCF31766602D0065D19B /* SLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +106,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0527CCF117665DF00065D19B /* MapKit.framework in Frameworks */,
+				0527CCEF176650330065D19B /* CoreTelephony.framework in Frameworks */,
+				0527CCCE176645B00065D19B /* CoreLocation.framework in Frameworks */,
 				0527CC7617663AB60065D19B /* UIKit.framework in Frameworks */,
 				0527CC7817663AB60065D19B /* Foundation.framework in Frameworks */,
 				0527CC7A17663AB60065D19B /* CoreGraphics.framework in Frameworks */,
@@ -115,6 +131,7 @@
 		0527CC6917663AB60065D19B = {
 			isa = PBXGroup;
 			children = (
+				0527CCF017665DF00065D19B /* MapKit.framework */,
 				0527CCB017663E2F0065D19B /* AFNetworking */,
 				0527CC7B17663AB60065D19B /* Send Location To Server */,
 				0527CC9F17663AB60065D19B /* Send Location To ServerTests */,
@@ -135,6 +152,8 @@
 		0527CC7417663AB60065D19B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0527CCEE176650330065D19B /* CoreTelephony.framework */,
+				0527CCCD176645B00065D19B /* CoreLocation.framework */,
 				0527CC7517663AB60065D19B /* UIKit.framework */,
 				0527CC7717663AB60065D19B /* Foundation.framework */,
 				0527CC7917663AB60065D19B /* CoreGraphics.framework */,
@@ -146,11 +165,16 @@
 		0527CC7B17663AB60065D19B /* Send Location To Server */ = {
 			isa = PBXGroup;
 			children = (
+				0527CCE71766465B0065D19B /* SLAppManager.h */,
+				0527CCE81766465B0065D19B /* SLAppManager.m */,
+				0527CCEA176646740065D19B /* SLLocationManager.h */,
+				0527CCEB176646740065D19B /* SLLocationManager.m */,
 				0527CC8417663AB60065D19B /* SLAppDelegate.h */,
 				0527CC8517663AB60065D19B /* SLAppDelegate.m */,
+				0527CCED17664F740065D19B /* CoreTelephony.h */,
 				0527CC8D17663AB60065D19B /* MainStoryboard.storyboard */,
-				0527CC9017663AB60065D19B /* SLViewController.h */,
-				0527CC9117663AB60065D19B /* SLViewController.m */,
+				0527CCF21766602D0065D19B /* SLMainViewController.h */,
+				0527CCF31766602D0065D19B /* SLMainViewController.m */,
 				0527CC7C17663AB60065D19B /* Supporting Files */,
 			);
 			path = "Send Location To Server";
@@ -328,7 +352,6 @@
 			files = (
 				0527CC8217663AB60065D19B /* main.m in Sources */,
 				0527CC8617663AB60065D19B /* SLAppDelegate.m in Sources */,
-				0527CC9217663AB60065D19B /* SLViewController.m in Sources */,
 				0527CCC417663E2F0065D19B /* AFHTTPClient.m in Sources */,
 				0527CCC517663E2F0065D19B /* AFHTTPRequestOperation.m in Sources */,
 				0527CCC617663E2F0065D19B /* AFImageRequestOperation.m in Sources */,
@@ -338,6 +361,9 @@
 				0527CCCA17663E2F0065D19B /* AFURLConnectionOperation.m in Sources */,
 				0527CCCB17663E2F0065D19B /* AFXMLRequestOperation.m in Sources */,
 				0527CCCC17663E2F0065D19B /* UIImageView+AFNetworking.m in Sources */,
+				0527CCE91766465B0065D19B /* SLAppManager.m in Sources */,
+				0527CCEC176646740065D19B /* SLLocationManager.m in Sources */,
+				0527CCF41766602D0065D19B /* SLMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

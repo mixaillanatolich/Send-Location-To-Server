@@ -15,6 +15,8 @@ typedef void(^locationHandler)(CLLocation *location);
 
 + (SLLocationManager*)sharedManager;
 
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
 @property (nonatomic, copy) locationHandler locationUpdatedInForeground;
 @property (nonatomic, copy) locationHandler locationUpdatedInBackground;
 
