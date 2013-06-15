@@ -8,7 +8,7 @@
 
 #import "SLAppDelegate.h"
 #import "SLLocationManager.h"
-#import "SLAppDelegate.h"
+#import "SLAppManager.h"
 
 @implementation SLAppDelegate
 
@@ -16,16 +16,14 @@
 {
     
     if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
+        
+        [SLAppManager showLocalNotificationForTestWithMessage:@"UIApplicationLaunchOptionsLocationKey"];
+        
         SLLocationManager *locationManager = [SLLocationManager sharedManager];
-        [locationManager setLocationUpdatedInBackground:^(CLLocation *location) {
-            UILocalNotification *notification = [[UILocalNotification alloc] init];
-            notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:15];
-            notification.alertBody = [NSString stringWithFormat:@"New location: %@", location];
-            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-        }];
         [locationManager startUpdatingLocation];
+        
     } else {
-        [SLLocationManager sharedManager];
+        [SLAppManager sharedManager];
     }
     
     return YES;

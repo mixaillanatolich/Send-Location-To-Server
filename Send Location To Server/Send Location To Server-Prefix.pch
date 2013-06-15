@@ -12,3 +12,14 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#ifdef DEBUG
+    #define NSLog(__FORMAT__, ...) NSLog((@"TF %s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+    #define NSLog(__FORMAT__, ...)
+#endif
+
+#define is4inchDevice ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && [UIScreen mainScreen].bounds.size.height == 568)
+
+#define UserDefaults    [NSUserDefaults standardUserDefaults]
+#define NotificationCenter [NSNotificationCenter defaultCenter]

@@ -7,9 +7,10 @@
 //
 
 #import "SLLocationManager.h"
+#import "SLAppManager.h"
 
-static CGFloat const kMinUpdateDistance = 10.f;
-static NSTimeInterval const kMinUpdateTime = 90.f;
+static CGFloat const kMinUpdateDistance = 5.f;
+static NSTimeInterval const kMinUpdateTime = 30.f;
 static NSTimeInterval const kMaxTimeToLive = 30.f;
 
 @interface SLLocationManager () {
@@ -91,18 +92,26 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
     }
     
     if ([self isInBackground]) {
-        if (self.locationUpdatedInBackground) {
+        
+        [SLAppManager showLocalNotificationForTestWithMessage:[NSString stringWithFormat:@"New location: %@", newLocation]];
+        
+
+        //if (self.locationUpdatedInBackground) {
             bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler: ^{
                 [[UIApplication sharedApplication] endBackgroundTask:bgTask];
             }];
-            
-            self.locationUpdatedInBackground(newLocation);
+        
+        
+        [SLAppManager sendLocation:newLocation withFinishBlock:^{
+            [SLAppManager showLocalNotificationForTestWithMessage:@"location sended and end background task"];
             [self endBackgroundTask];
-        }
+         }];
+            //self.locationUpdatedInBackground(newLocation);
+            //[self endBackgroundTask];
+        //}
+        
     } else {
-        if (self.locationUpdatedInForeground) {
-            self.locationUpdatedInForeground(newLocation);
-        }
+        [SLAppManager sendLocation:newLocation withFinishBlock:nil];
     }
 }
 

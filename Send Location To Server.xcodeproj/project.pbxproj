@@ -131,7 +131,6 @@
 		0527CC6917663AB60065D19B = {
 			isa = PBXGroup;
 			children = (
-				0527CCF017665DF00065D19B /* MapKit.framework */,
 				0527CCB017663E2F0065D19B /* AFNetworking */,
 				0527CC7B17663AB60065D19B /* Send Location To Server */,
 				0527CC9F17663AB60065D19B /* Send Location To ServerTests */,
@@ -152,6 +151,7 @@
 		0527CC7417663AB60065D19B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0527CCF017665DF00065D19B /* MapKit.framework */,
 				0527CCEE176650330065D19B /* CoreTelephony.framework */,
 				0527CCCD176645B00065D19B /* CoreLocation.framework */,
 				0527CC7517663AB60065D19B /* UIKit.framework */,

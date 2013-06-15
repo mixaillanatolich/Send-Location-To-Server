@@ -12,11 +12,15 @@
 @interface SLAppManager : NSObject
 
 + (SLAppManager*)sharedManager;
++ (NSString*)hostname;
++ (NSString*)requestFormat;
+
++ (void)sendLocation:(CLLocation*)location withFinishBlock:(void(^)())callback ;
+
++ (void)showLocalNotificationForTestWithMessage:(NSString*)message;
 
 - (void)sendLocationToServer;
 
-- (NSString*)hostname;
-- (NSString*)requestFormat;
 
 @property (nonatomic, strong) SLLocationManager *locationManager;
 
