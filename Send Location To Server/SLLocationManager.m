@@ -102,7 +102,7 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
             }];
         
         
-        [SLAppManager sendLocation:newLocation withFinishBlock:^{
+        [SLAppManager sendNMEALocation:newLocation withFinishBlock:^{
             [SLAppManager showLocalNotificationForTestWithMessage:@"location sended and end background task"];
             [self endBackgroundTask];
          }];
@@ -111,7 +111,7 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
         //}
         
     } else {
-        [SLAppManager sendLocation:newLocation withFinishBlock:nil];
+        [SLAppManager sendNMEALocation:newLocation withFinishBlock:nil];
     }
 }
 

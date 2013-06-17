@@ -79,36 +79,12 @@
 
 #pragma mark - public
 
-+ (NSString*)hostname {
-    return [NSString stringWithFormat:@"http://tr.gpshome.ru:20100"];
-}
-
-+ (NSString*)requestFormat {
-    return @"imei=%@lat=%@&lon=%@&speed=%@&heading=%@&vacc=%@&hacc=%@&altitude=%@";
-}
-
-+ (NSString*)CTGetIMEI {
-    
-    struct CTResult it;
-    CFMutableDictionaryRef dict;
-    struct CTServerConnection *conn;
-    
-    conn = _CTServerConnectionCreate(kCFAllocatorDefault, callback, NULL);
-    
-    _CTServerConnectionCopyMobileEquipmentInfo(&it, conn, &dict);
-    CFRelease(conn);
-    
-    return (__bridge id)CFDictionaryGetValue(dict, (__bridge void *)kCTMobileEquipmentInfoIMEI);
-}
-
 + (void)sendLocation:(CLLocation*)location withFinishBlock:(void(^)())callback {
     
     if (!location) {
         callback();
         return;
     }
-    
-    
     
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self hostname]]];
     
@@ -152,6 +128,143 @@
     
 }
 
++ (void)sendNMEALocation:(CLLocation*)location withFinishBlock:(void(^)())callback {
+    
+    if (!location) {
+        callback();
+        return;
+    }
+    
+    //POST /gprmc/Data?acct=testandr&dev=test01&gprmc=$GPRMC,204102,A,5640.2307,N,04327.5038,E,000.0,000.0,110613,,*11
+    
+    NSArray *timeAndDate = [SLAppManager devideTimeAndDate];
+    
+    NSString *gprmc = [NSString stringWithFormat:@"$GPRMC,%@,A,%@,%@,%@,%04.1f,%@,,*", timeAndDate[0],[SLAppManager latitudeForCLLocationDegrees:location.coordinate.latitude], [SLAppManager longitudeForCLLocationDegrees:location.coordinate.longitude], [SLAppManager speedToKnots:location.speed], (location.course >= 0.0 ? location.course : 0.0),timeAndDate[1]];
+    
+    gprmc = [gprmc stringByAppendingString:[SLAppManager xorString:gprmc]];
+    
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self hostname]]];
+    
+    NSString *param = [NSString stringWithFormat:@"%@?acct=%@&dev=%@&gprmc=%@",[SLAppManager pathOnServer], [SLAppManager deviceId], [SLAppManager deviceId], gprmc];
+    
+    NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:param parameters:nil];
+    [request setTimeoutInterval:15];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"sendLocationToServer %@", JSON);
+        if (callback) {
+            callback();
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"sendLocationToServer Fail %@ - %@",JSON, error);
+        if (callback) {
+            callback();
+        }
+    }];
+    [operation start];
+    
+}
+
+#pragma mark - private
+
++ (NSString*)hostname {
+    return [NSString stringWithFormat:@"http://tr.gpshome.ru:20100"];
+}
+
++ (NSString*)pathOnServer {
+    return [NSString stringWithFormat:@"/gprmc/Data"];
+}
+
++ (NSString*)deviceId {
+    return [NSString stringWithFormat:@"testandr"];
+}
+
++ (NSString*)requestFormat {
+    return @"imei=%@lat=%@&lon=%@&speed=%@&heading=%@&vacc=%@&hacc=%@&altitude=%@";
+}
+
++ (NSArray*)devideTimeAndDate {
+    
+    NSLocale * enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] ;
+    NSDateFormatter *formatOfDate = [[NSDateFormatter alloc] init];
+    [formatOfDate setDateFormat:@"HHmmss.SSS"];
+    [formatOfDate setLocale:enUSPOSIXLocale];
+    [formatOfDate setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    
+    NSString *time = [formatOfDate stringFromDate:[NSDate new]];
+    
+    [formatOfDate setDateFormat:@"ddMMyy"];
+    NSString *date = [formatOfDate stringFromDate:[NSDate new]];
+    
+    return @[time, date];
+}
+
++ (NSString*)latitudeForCLLocationDegrees:(CLLocationDegrees)latitude {
+    
+    if (!latitude) {
+        return @"0000.0000,N";
+    }
+    
+    double _degrees = floor(fabs(latitude));
+    double decimal = fabs(latitude - _degrees);
+    double _minutes = decimal * 60.0;
+    return [NSString stringWithFormat:@"%03.0f%6.4f,%@",_degrees, _minutes, ((latitude < 0.0) ? @"S" : @"N") ];
+}
+
++ (NSString*)longitudeForCLLocationDegrees:(CLLocationDegrees)longitude {
+    
+    if (!longitude) {
+        return @"0000.0000,E";
+    }
+    
+    double _degrees = floor(fabs(longitude));
+    double decimal = fabs(longitude - _degrees);
+    double _minutes = decimal * 60.0;
+    return [NSString stringWithFormat:@"%03.0f%6.4f,%@",_degrees, _minutes, ((longitude < 0.0) ? @"W" : @"E") ];
+}
+
++ (NSString*)speedToKnots:(CLLocationSpeed)speed {
+    
+    NSString *knots;
+    
+    if (speed <= 0.0) {
+        knots = @"0.0";
+    } else {
+        knots = [NSString stringWithFormat:@"%04.1f", speed * 0.514];
+    }
+    
+    return knots;
+}
+
++ (NSString*)CTGetIMEI {
+    
+    struct CTResult it;
+    CFMutableDictionaryRef dict;
+    struct CTServerConnection *conn;
+    
+    conn = _CTServerConnectionCreate(kCFAllocatorDefault, callback, NULL);
+    
+    _CTServerConnectionCopyMobileEquipmentInfo(&it, conn, &dict);
+    CFRelease(conn);
+    
+    return (__bridge id)CFDictionaryGetValue(dict, (__bridge void *)kCTMobileEquipmentInfoIMEI);
+}
+
++ (NSString*)xorString:(NSString *)string {
+    
+    int checksum = 0;
+    NSUInteger length = [string length];
+    unichar buffer[length];
+    
+    [string getCharacters:buffer range:NSMakeRange(0, length)];
+    
+    for (NSUInteger i = 0; i < length; i++){
+        checksum ^= buffer[i];
+    }
+    
+    return [NSString stringWithFormat:@"%02X",checksum];
+}
+
 
 #pragma mark - debug
 + (void)showLocalNotificationForTestWithMessage:(NSString*)message {
@@ -171,7 +284,10 @@
     
     lastUpdateDate = [NSDate new];
     
-    [SLAppManager sendLocation:currentLocation withFinishBlock:nil];
+    [SLAppManager sendNMEALocation:currentLocation withFinishBlock:nil];
+    
+//    [SLAppManager sendLocation:currentLocation withFinishBlock:nil];
+//    return;
     
     /*
      AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self hostname]]];
@@ -200,21 +316,27 @@
      Connection: Keep-Alive
      */
     
-    /*
-     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://tr.gpshome.ru:20100/gprmc/Data?acct=testandr&dev=test01&gprmc=$GPRMC,205002,A,5640.2307,N,04327.5038,E,000.0,000.0,120613,,*11"]
-     cachePolicy:NSURLRequestReloadIgnoringCacheData
-     timeoutInterval:30];
-     [request setHTTPMethod:@"POST"];
-     NSURLResponse *response;
-     NSError *error = nil;
-     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-     
-     if (error) {
-     NSLog(@"launch Request error:%@", error.description);
-     }else{
-     NSLog(@"launch response:\n%@", [[NSString alloc] initWithBytes:data.bytes length:data.length encoding:NSUTF8StringEncoding]);
-     }
-     */
+    
+//    NSArray *timeAndDate = [SLAppManager devideTimeAndDate];
+//    NSLog(@"\ntime: %@\ndate: %@",timeAndDate[0], timeAndDate[1]);
+//    
+//    NSLog(@"latitude: %@", [SLAppManager latitudeForCLLocationDegrees:currentLocation.coordinate.latitude]);
+//    NSLog(@"longitude: %@", [SLAppManager longitudeForCLLocationDegrees:currentLocation.coordinate.longitude]);
+//    
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://tr.gpshome.ru:20100/gprmc/Data?acct=testandr&dev=test01&gprmc=$GPRMC,%@,A,%@,%@,000.0,000.0,%@,,*11",timeAndDate[0],[SLAppManager latitudeForCLLocationDegrees:currentLocation.coordinate.latitude], [SLAppManager longitudeForCLLocationDegrees:currentLocation.coordinate.longitude], timeAndDate[1]]]
+//                                                           cachePolicy:NSURLRequestReloadIgnoringCacheData
+//                                                       timeoutInterval:10];
+//     [request setHTTPMethod:@"POST"];
+//     NSURLResponse *response;
+//     NSError *error = nil;
+//     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//     
+//     if (error) {
+//     NSLog(@"launch Request error:%@", error.description);
+//     }else{
+//     NSLog(@"launch response:\n%@", [[NSString alloc] initWithBytes:data.bytes length:data.length encoding:NSUTF8StringEncoding]);
+//     }
+    
 }
 
 
