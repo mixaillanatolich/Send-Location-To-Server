@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051A31011770E9B30064C20D /* SLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051A31001770E9B30064C20D /* SLMapViewController.m */; };
+		051A310C1770F3970064C20D /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A31031770F3970064C20D /* location.png */; };
+		051A310D1770F3970064C20D /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A31041770F3970064C20D /* location@2x.png */; };
+		051A310E1770F3970064C20D /* location_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A31051770F3970064C20D /* location_64.png */; };
+		051A310F1770F3970064C20D /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A31061770F3970064C20D /* map.png */; };
+		051A31101770F3970064C20D /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A31071770F3970064C20D /* map@2x.png */; };
+		051A31111770F3970064C20D /* map_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A31081770F3970064C20D /* map_64.png */; };
+		051A31121770F3970064C20D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A31091770F3970064C20D /* settings.png */; };
+		051A31131770F3970064C20D /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A310A1770F3970064C20D /* settings@2x.png */; };
+		051A31141770F3970064C20D /* settings_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A310B1770F3970064C20D /* settings_64.png */; };
 		0527CC7617663AB60065D19B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CC7517663AB60065D19B /* UIKit.framework */; };
 		0527CC7817663AB60065D19B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CC7717663AB60065D19B /* Foundation.framework */; };
 		0527CC7A17663AB60065D19B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CC7917663AB60065D19B /* CoreGraphics.framework */; };
@@ -50,6 +60,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		051A30FF1770E9B30064C20D /* SLMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMapViewController.h; sourceTree = "<group>"; };
+		051A31001770E9B30064C20D /* SLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMapViewController.m; sourceTree = "<group>"; };
+		051A31031770F3970064C20D /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		051A31041770F3970064C20D /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
+		051A31051770F3970064C20D /* location_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_64.png; sourceTree = "<group>"; };
+		051A31061770F3970064C20D /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		051A31071770F3970064C20D /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
+		051A31081770F3970064C20D /* map_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_64.png; sourceTree = "<group>"; };
+		051A31091770F3970064C20D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		051A310A1770F3970064C20D /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		051A310B1770F3970064C20D /* settings_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_64.png; sourceTree = "<group>"; };
 		0527CC7217663AB60065D19B /* Send Location To Server.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Send Location To Server.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0527CC7517663AB60065D19B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0527CC7717663AB60065D19B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -128,9 +149,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		051A31021770F3970064C20D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				051A31031770F3970064C20D /* location.png */,
+				051A31041770F3970064C20D /* location@2x.png */,
+				051A31051770F3970064C20D /* location_64.png */,
+				051A31061770F3970064C20D /* map.png */,
+				051A31071770F3970064C20D /* map@2x.png */,
+				051A31081770F3970064C20D /* map_64.png */,
+				051A31091770F3970064C20D /* settings.png */,
+				051A310A1770F3970064C20D /* settings@2x.png */,
+				051A310B1770F3970064C20D /* settings_64.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		0527CC6917663AB60065D19B = {
 			isa = PBXGroup;
 			children = (
+				051A31021770F3970064C20D /* Assets */,
 				0527CCB017663E2F0065D19B /* AFNetworking */,
 				0527CC7B17663AB60065D19B /* Send Location To Server */,
 				0527CC9F17663AB60065D19B /* Send Location To ServerTests */,
@@ -175,6 +213,8 @@
 				0527CC8D17663AB60065D19B /* MainStoryboard.storyboard */,
 				0527CCF21766602D0065D19B /* SLMainViewController.h */,
 				0527CCF31766602D0065D19B /* SLMainViewController.m */,
+				051A30FF1770E9B30064C20D /* SLMapViewController.h */,
+				051A31001770E9B30064C20D /* SLMapViewController.m */,
 				0527CC7C17663AB60065D19B /* Supporting Files */,
 			);
 			path = "Send Location To Server";
@@ -316,6 +356,15 @@
 				0527CC8A17663AB60065D19B /* Default@2x.png in Resources */,
 				0527CC8C17663AB60065D19B /* Default-568h@2x.png in Resources */,
 				0527CC8F17663AB60065D19B /* MainStoryboard.storyboard in Resources */,
+				051A310C1770F3970064C20D /* location.png in Resources */,
+				051A310D1770F3970064C20D /* location@2x.png in Resources */,
+				051A310E1770F3970064C20D /* location_64.png in Resources */,
+				051A310F1770F3970064C20D /* map.png in Resources */,
+				051A31101770F3970064C20D /* map@2x.png in Resources */,
+				051A31111770F3970064C20D /* map_64.png in Resources */,
+				051A31121770F3970064C20D /* settings.png in Resources */,
+				051A31131770F3970064C20D /* settings@2x.png in Resources */,
+				051A31141770F3970064C20D /* settings_64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +413,7 @@
 				0527CCE91766465B0065D19B /* SLAppManager.m in Sources */,
 				0527CCEC176646740065D19B /* SLLocationManager.m in Sources */,
 				0527CCF41766602D0065D19B /* SLMainViewController.m in Sources */,
+				051A31011770E9B30064C20D /* SLMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

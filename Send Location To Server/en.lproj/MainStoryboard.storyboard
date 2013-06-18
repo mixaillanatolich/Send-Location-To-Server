@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-188" y="128"/>
         </scene>
-        <!--View Controller - Map-->
+        <!--Map View Controller - Map-->
         <scene sceneID="ZhW-6W-U0R">
             <objects>
-                <viewController id="mDG-7q-Xhq" sceneMemberID="viewController">
+                <viewController id="mDG-7q-Xhq" customClass="SLMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="veo-6e-8hh">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -42,7 +42,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="EEe-PZ-g6h"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map.png" id="EEe-PZ-g6h"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksW-ab-oOU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,13 +57,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="UEM-V0-pUg"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="UEM-V0-pUg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5w-RX-Ou8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="846" y="1130"/>
         </scene>
-        <!--Main View Controller - Main-->
+        <!--Main View Controller - Location-->
         <scene sceneID="Rmt-Yx-PdQ">
             <objects>
                 <viewController id="YAO-bX-fIW" customClass="SLMainViewController" sceneMemberID="viewController">
@@ -89,7 +89,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Main" id="1fo-yE-sz6"/>
+                    <tabBarItem key="tabBarItem" title="Location" image="location.png" id="1fo-yE-sz6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BAw-Kr-0rF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -117,12 +117,20 @@
             <point key="canvasLocation" x="312" y="130"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="location.png" width="24" height="24"/>
+        <image name="map.png" width="24" height="24"/>
+        <image name="settings.png" width="24" height="24"/>
+    </resources>
     <classes>
         <class className="SLMainViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMainViewController.h"/>
             <relationships>
                 <relationship kind="action" name="sendButtonClicked:"/>
             </relationships>
+        </class>
+        <class className="SLMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMapViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
