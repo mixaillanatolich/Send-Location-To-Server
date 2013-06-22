@@ -99,13 +99,13 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
             [[UIApplication sharedApplication] endBackgroundTask:bgTask];
         }];
         
-        [SLAppManager sendNMEALocation:newLocation withFinishBlock:^{
+        [SLAppManager sendLocation:newLocation withFinishBlock:^{
             [SLAppManager showLocalNotificationForTestWithMessage:@"location sended and end background task"];
             [self endBackgroundTask];
         }];
         
     } else {
-        [SLAppManager sendNMEALocation:newLocation withFinishBlock:nil];
+        [SLAppManager sendLocation:newLocation withFinishBlock:nil];
         [NotificationCenter postNotificationName:UPDATE_LOCATION_NOTIFICATION object:newLocation];
     }
 }

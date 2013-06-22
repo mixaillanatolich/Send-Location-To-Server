@@ -14,9 +14,9 @@
 + (SLAppManager*)sharedManager;
 
 + (void)sendLocation:(CLLocation*)location withFinishBlock:(void(^)())callback ;
-+ (void)sendNMEALocation:(CLLocation*)location withFinishBlock:(void(^)())callback;
 
 + (void)showLocalNotificationForTestWithMessage:(NSString*)message;
+
 
 
 - (void)sendLocationToServer;

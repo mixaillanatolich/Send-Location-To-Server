@@ -86,32 +86,19 @@
         return;
     }
     
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self hostname]]];
+    NSMutableURLRequest *request;
     
-    [client setDefaultHeader:@"User-Agent" value:[NSString stringWithFormat:@"SendLocation %@", [client defaultValueForHeader:@"User-Agent"]]];
+    //testing
+    int typeOfRequest;
+    typeOfRequest = 1;
     
-    NSDictionary *params = @{@"imei": [self CTGetIMEI],
-                             @"lat" : [NSString stringWithFormat:@"%.6f", location.coordinate.latitude],
-                             @"lon" : [NSString stringWithFormat:@"%.6f", location.coordinate.longitude],
-                             @"speed" : [NSString stringWithFormat:@"%.6f", location.speed],
-                             @"heading" : [NSString stringWithFormat:@"%.6f", location.course],
-                             @"vacc" : [NSString stringWithFormat:@"%.6f", location.verticalAccuracy],
-                             @"hacc" : [NSString stringWithFormat:@"%.6f", location.horizontalAccuracy],
-                             @"altitude" : [NSString stringWithFormat:@"%.6f", location.altitude],
-                             @"deviceid" : @""};
-    
-       /*imei=013411001582430&
-        lat=56.671478&
-        lon=43.465025&
-        speed=-1.000000&
-        heading=-1.000000&
-        vacc=10.000000&
-        hacc=1414.000000&
-        altitude=116.273415&
-        deviceid=" */
-    
-    NSMutableURLRequest *request = [client requestWithMethod:@"GET" path:nil parameters:params];
-    [request setTimeoutInterval:15];
+    if (typeOfRequest == 0) {
+        request = [SLAppManager customFormatRequestForLocation:location];
+    } else if (typeOfRequest == 1) {
+        request = [SLAppManager NMEARequestForLocation:location];
+    } else {
+        request = [SLAppManager NMEARequestForLocation:location];
+    }
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSLog(@"sendLocationToServer %@", JSON);
@@ -128,12 +115,39 @@
     
 }
 
-+ (void)sendNMEALocation:(CLLocation*)location withFinishBlock:(void(^)())callback {
++ (NSMutableURLRequest*)customFormatRequestForLocation:(CLLocation*)location {
     
-    if (!location) {
-        callback();
-        return;
-    }
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self hostname]]];
+    
+    [client setDefaultHeader:@"User-Agent" value:[NSString stringWithFormat:@"SendLocation %@", [client defaultValueForHeader:@"User-Agent"]]];
+    
+    NSDictionary *params = @{@"imei": [self CTGetIMEI],
+                             @"lat" : [NSString stringWithFormat:@"%.6f", location.coordinate.latitude],
+                             @"lon" : [NSString stringWithFormat:@"%.6f", location.coordinate.longitude],
+                             @"speed" : [NSString stringWithFormat:@"%.6f", location.speed],
+                             @"heading" : [NSString stringWithFormat:@"%.6f", location.course],
+                             @"vacc" : [NSString stringWithFormat:@"%.6f", location.verticalAccuracy],
+                             @"hacc" : [NSString stringWithFormat:@"%.6f", location.horizontalAccuracy],
+                             @"altitude" : [NSString stringWithFormat:@"%.6f", location.altitude],
+                             @"deviceid" : @""};
+    
+    /*imei=013411001582430&
+     lat=56.671478&
+     lon=43.465025&
+     speed=-1.000000&
+     heading=-1.000000&
+     vacc=10.000000&
+     hacc=1414.000000&
+     altitude=116.273415&
+     deviceid=" */
+    
+    NSMutableURLRequest *request = [client requestWithMethod:@"GET" path:nil parameters:params];
+    [request setTimeoutInterval:15];
+    
+    return request;
+}
+
++ (NSMutableURLRequest*)NMEARequestForLocation:(CLLocation*)location {
     
     //POST /gprmc/Data?acct=testandr&dev=test01&gprmc=$GPRMC,204102,A,5640.2307,N,04327.5038,E,000.0,000.0,110613,,*11
     
@@ -150,19 +164,7 @@
     NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:param parameters:nil];
     [request setTimeoutInterval:15];
     
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"sendLocationToServer %@", JSON);
-        if (callback) {
-            callback();
-        }
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"sendLocationToServer Fail %@ - %@",JSON, error);
-        if (callback) {
-            callback();
-        }
-    }];
-    [operation start];
-    
+    return request;
 }
 
 #pragma mark - private
@@ -284,7 +286,7 @@
     
     lastUpdateDate = [NSDate new];
     
-    [SLAppManager sendNMEALocation:currentLocation withFinishBlock:nil];
+    [SLAppManager sendLocation:currentLocation withFinishBlock:nil];
     
 //    [SLAppManager sendLocation:currentLocation withFinishBlock:nil];
 //    return;
