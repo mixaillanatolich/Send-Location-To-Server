@@ -7,9 +7,8 @@
         <!--Navigation Controller-->
         <scene sceneID="E4P-sX-74N">
             <objects>
-                <navigationController definesPresentationContext="YES" id="qV2-TF-yTq" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="qV2-TF-yTq" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="ag3-Bs-R66">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
@@ -30,7 +29,7 @@
         <!--Map View Controller - Map-->
         <scene sceneID="ZhW-6W-U0R">
             <objects>
-                <viewController id="mDG-7q-Xhq" customClass="SLMapViewController" sceneMemberID="viewController">
+                <viewController title="Map" id="mDG-7q-Xhq" customClass="SLMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="veo-6e-8hh">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -39,14 +38,76 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="HAh-Ym-jNX">
+                                <rect key="frame" x="40" y="330" width="240" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="mapTypeChanged:" destination="mDG-7q-Xhq" eventType="valueChanged" id="ZdV-4H-KJE"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="map.png" id="EEe-PZ-g6h"/>
+                    <navigationItem key="navigationItem" title="Map" id="Uep-gN-oUW">
+                        <barButtonItem key="rightBarButtonItem" image="UserPosition.png" id="oCe-nc-gLW">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="userPositionButtonClicked:" destination="mDG-7q-Xhq" id="sHS-w2-ePU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapTypeControl" destination="HAh-Ym-jNX" id="oMp-cy-xSd"/>
+                        <outlet property="mapView" destination="RhQ-c9-anz" id="XXv-Cc-CkM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksW-ab-oOU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="456"/>
+            <point key="canvasLocation" x="1364" y="427"/>
+        </scene>
+        <!--Navigation Controller - Map-->
+        <scene sceneID="cyq-DJ-ARy">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="YPw-Ld-Yf6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="map.png" id="PnL-pm-6Mf"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="184-K1-Ux1">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mDG-7q-Xhq" kind="relationship" relationship="rootViewController" id="6LS-Zn-pms"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d64-at-hgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="846" y="427"/>
+        </scene>
+        <!--Navigation Controller - Settings-->
+        <scene sceneID="rdF-jO-UTx">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="aix-ER-8zn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="X5G-dv-eQl"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="FK8-gj-MaW">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bap-MS-yyC" kind="relationship" relationship="rootViewController" id="Zgq-k2-VIu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aYM-4j-el6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="875" y="1082"/>
         </scene>
         <!--View Controller - Settings-->
         <scene sceneID="XyO-ZS-fl4">
@@ -57,11 +118,30 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="UEM-V0-pUg"/>
+                    <navigationItem key="navigationItem" title="Settings" id="Z69-Ly-I9A"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5w-RX-Ou8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="1130"/>
+            <point key="canvasLocation" x="1418" y="1082"/>
+        </scene>
+        <!--Navigation Controller - Location-->
+        <scene sceneID="9T5-iF-a1z">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="7VS-k8-0ag" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Location" image="location.png" id="LKg-88-7pv"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="l3Y-SM-A0o">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="YAO-bX-fIW" kind="relationship" relationship="rootViewController" id="T9V-nM-DuH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dNR-2A-FZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="907" y="-336"/>
         </scene>
         <!--Main View Controller - Location-->
         <scene sceneID="Rmt-Yx-PdQ">
@@ -89,11 +169,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Location" image="location.png" id="1fo-yE-sz6"/>
+                    <navigationItem key="navigationItem" title="Location" id="zH9-YW-zOm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BAw-Kr-0rF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="-196"/>
+            <point key="canvasLocation" x="1354" y="-356"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rqu-JA-kEA">
@@ -107,17 +187,18 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="YAO-bX-fIW" kind="relationship" relationship="viewControllers" id="NAL-rm-m04"/>
-                        <segue destination="mDG-7q-Xhq" kind="relationship" relationship="viewControllers" id="a9l-Xe-iZD"/>
-                        <segue destination="bap-MS-yyC" kind="relationship" relationship="viewControllers" id="Hku-uO-nRe"/>
+                        <segue destination="7VS-k8-0ag" kind="relationship" relationship="viewControllers" id="kKN-X8-oDa"/>
+                        <segue destination="YPw-Ld-Yf6" kind="relationship" relationship="viewControllers" id="EOv-vR-r4y"/>
+                        <segue destination="aix-ER-8zn" kind="relationship" relationship="viewControllers" id="VGh-TM-N1W"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rai-xq-iwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312" y="130"/>
+            <point key="canvasLocation" x="290" y="128"/>
         </scene>
     </scenes>
     <resources>
+        <image name="UserPosition.png" width="24" height="24"/>
         <image name="location.png" width="24" height="24"/>
         <image name="map.png" width="24" height="24"/>
         <image name="settings.png" width="24" height="24"/>
@@ -131,6 +212,12 @@
         </class>
         <class className="SLMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="mapTypeChanged:"/>
+                <relationship kind="action" name="userPositionButtonClicked:"/>
+                <relationship kind="outlet" name="mapTypeControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
