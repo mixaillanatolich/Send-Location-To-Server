@@ -143,20 +143,20 @@
             </objects>
             <point key="canvasLocation" x="907" y="-336"/>
         </scene>
-        <!--Main View Controller - Location-->
+        <!--Location Detail View Controller - Location-->
         <scene sceneID="Rmt-Yx-PdQ">
             <objects>
-                <viewController id="YAO-bX-fIW" customClass="SLMainViewController" sceneMemberID="viewController">
+                <viewController id="YAO-bX-fIW" customClass="SLLocationDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vca-Gu-fAO">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bko-tf-GVo">
-                                <rect key="frame" x="124" y="320" width="73" height="44"/>
+                                <rect key="frame" x="232" y="313" width="75" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Send">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Send" backgroundImage="gray_blue_background_small.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -166,10 +166,88 @@
                                     <action selector="sendButtonClicked:" destination="YAO-bX-fIW" eventType="touchUpInside" id="qEv-ds-96t"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VT0-RN-yTF">
+                                <rect key="frame" x="11" y="313" width="200" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Start Sending" backgroundImage="gray_background.png">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" title="Stop Sending" backgroundImage="dark_background.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendLoopButtonClicked:" destination="YAO-bX-fIW" eventType="touchUpInside" id="XVr-An-McW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Last update: June 23, 2013 4:42:56" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T1w-g5-zea">
+                                <rect key="frame" x="20" y="12" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Latitude: 56.26414" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nZi-0p-XIs">
+                                <rect key="frame" x="20" y="41" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Longitude: 56.356" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h6C-4M-YOs">
+                                <rect key="frame" x="20" y="70" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Altitude: n/a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9FV-Wc-p2J">
+                                <rect key="frame" x="20" y="99" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Speed: 0.3 km/h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SUL-nr-0xn">
+                                <rect key="frame" x="20" y="128" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Direction: 56°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SZy-k6-9q9">
+                                <rect key="frame" x="20" y="157" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Accuracy: V 56m, H 96m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bvj-ZI-Bgc">
+                                <rect key="frame" x="20" y="186" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Location" id="zH9-YW-zOm"/>
+                    <connections>
+                        <outlet property="accuracyLabel" destination="bvj-ZI-Bgc" id="wZw-ej-w5U"/>
+                        <outlet property="altitudeLabel" destination="9FV-Wc-p2J" id="sFp-pe-5DN"/>
+                        <outlet property="directionLabel" destination="SZy-k6-9q9" id="3B3-5W-CWi"/>
+                        <outlet property="latitudeLabel" destination="nZi-0p-XIs" id="ja5-yk-lBL"/>
+                        <outlet property="longitudeLabel" destination="h6C-4M-YOs" id="ira-e6-W1d"/>
+                        <outlet property="sendButton" destination="Bko-tf-GVo" id="gAT-vh-uK6"/>
+                        <outlet property="sendingLoopButton" destination="VT0-RN-yTF" id="2la-Es-bSV"/>
+                        <outlet property="speedLabel" destination="SUL-nr-0xn" id="6c4-Hn-yKT"/>
+                        <outlet property="timestampLabel" destination="T1w-g5-zea" id="ahr-XP-KkS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BAw-Kr-0rF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -199,27 +277,13 @@
     </scenes>
     <resources>
         <image name="UserPosition.png" width="24" height="24"/>
+        <image name="dark_background.png" width="200" height="46"/>
+        <image name="gray_background.png" width="200" height="46"/>
+        <image name="gray_blue_background_small.png" width="75" height="46"/>
         <image name="location.png" width="24" height="24"/>
         <image name="map.png" width="24" height="24"/>
         <image name="settings.png" width="24" height="24"/>
     </resources>
-    <classes>
-        <class className="SLMainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMainViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="sendButtonClicked:"/>
-            </relationships>
-        </class>
-        <class className="SLMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLMapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="mapTypeChanged:"/>
-                <relationship kind="action" name="userPositionButtonClicked:"/>
-                <relationship kind="outlet" name="mapTypeControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

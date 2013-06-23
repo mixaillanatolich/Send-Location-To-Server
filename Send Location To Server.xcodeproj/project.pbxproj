@@ -46,7 +46,13 @@
 		0527CCEC176646740065D19B /* SLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCEB176646740065D19B /* SLLocationManager.m */; };
 		0527CCEF176650330065D19B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CCEE176650330065D19B /* CoreTelephony.framework */; };
 		0527CCF117665DF00065D19B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CCF017665DF00065D19B /* MapKit.framework */; };
-		0527CCF41766602D0065D19B /* SLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCF31766602D0065D19B /* SLMainViewController.m */; };
+		0527CCF41766602D0065D19B /* SLLocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCF31766602D0065D19B /* SLLocationDetailViewController.m */; };
+		056D5DE317770FD900248860 /* dark_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DDF17770FD900248860 /* dark_background.png */; };
+		056D5DE417770FD900248860 /* dark_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE017770FD900248860 /* dark_background@2x.png */; };
+		056D5DE517770FD900248860 /* gray_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE117770FD900248860 /* gray_background.png */; };
+		056D5DE617770FD900248860 /* gray_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE217770FD900248860 /* gray_background@2x.png */; };
+		056D5DE91777149400248860 /* gray_blue_background_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE71777149400248860 /* gray_blue_background_small.png */; };
+		056D5DEA1777149400248860 /* gray_blue_background_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE81777149400248860 /* gray_blue_background_small@2x.png */; };
 		05D378661776007900D0F730 /* SLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D378651776007900D0F730 /* SLConstants.m */; };
 		05D378691776035500D0F730 /* UserPosition.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D378671776035500D0F730 /* UserPosition.png */; };
 		05D3786A1776035500D0F730 /* UserPosition@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D378681776035500D0F730 /* UserPosition@2x.png */; };
@@ -121,8 +127,14 @@
 		0527CCED17664F740065D19B /* CoreTelephony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTelephony.h; sourceTree = "<group>"; };
 		0527CCEE176650330065D19B /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		0527CCF017665DF00065D19B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		0527CCF21766602D0065D19B /* SLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMainViewController.h; sourceTree = "<group>"; };
-		0527CCF31766602D0065D19B /* SLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMainViewController.m; sourceTree = "<group>"; };
+		0527CCF21766602D0065D19B /* SLLocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLocationDetailViewController.h; sourceTree = "<group>"; };
+		0527CCF31766602D0065D19B /* SLLocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLocationDetailViewController.m; sourceTree = "<group>"; };
+		056D5DDF17770FD900248860 /* dark_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_background.png; sourceTree = "<group>"; };
+		056D5DE017770FD900248860 /* dark_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark_background@2x.png"; sourceTree = "<group>"; };
+		056D5DE117770FD900248860 /* gray_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_background.png; sourceTree = "<group>"; };
+		056D5DE217770FD900248860 /* gray_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray_background@2x.png"; sourceTree = "<group>"; };
+		056D5DE71777149400248860 /* gray_blue_background_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_blue_background_small.png; sourceTree = "<group>"; };
+		056D5DE81777149400248860 /* gray_blue_background_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray_blue_background_small@2x.png"; sourceTree = "<group>"; };
 		05D378641775FE5200D0F730 /* SLConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLConstants.h; sourceTree = "<group>"; };
 		05D378651776007900D0F730 /* SLConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLConstants.m; sourceTree = "<group>"; };
 		05D378671776035500D0F730 /* UserPosition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserPosition.png; sourceTree = "<group>"; };
@@ -159,6 +171,12 @@
 		051A31021770F3970064C20D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				056D5DE71777149400248860 /* gray_blue_background_small.png */,
+				056D5DE81777149400248860 /* gray_blue_background_small@2x.png */,
+				056D5DDF17770FD900248860 /* dark_background.png */,
+				056D5DE017770FD900248860 /* dark_background@2x.png */,
+				056D5DE117770FD900248860 /* gray_background.png */,
+				056D5DE217770FD900248860 /* gray_background@2x.png */,
 				05D378671776035500D0F730 /* UserPosition.png */,
 				05D378681776035500D0F730 /* UserPosition@2x.png */,
 				051A31031770F3970064C20D /* location.png */,
@@ -222,8 +240,8 @@
 				0527CC8517663AB60065D19B /* SLAppDelegate.m */,
 				0527CCED17664F740065D19B /* CoreTelephony.h */,
 				0527CC8D17663AB60065D19B /* MainStoryboard.storyboard */,
-				0527CCF21766602D0065D19B /* SLMainViewController.h */,
-				0527CCF31766602D0065D19B /* SLMainViewController.m */,
+				0527CCF21766602D0065D19B /* SLLocationDetailViewController.h */,
+				0527CCF31766602D0065D19B /* SLLocationDetailViewController.m */,
 				051A30FF1770E9B30064C20D /* SLMapViewController.h */,
 				051A31001770E9B30064C20D /* SLMapViewController.m */,
 				0527CC7C17663AB60065D19B /* Supporting Files */,
@@ -378,6 +396,12 @@
 				051A31141770F3970064C20D /* settings_64.png in Resources */,
 				05D378691776035500D0F730 /* UserPosition.png in Resources */,
 				05D3786A1776035500D0F730 /* UserPosition@2x.png in Resources */,
+				056D5DE317770FD900248860 /* dark_background.png in Resources */,
+				056D5DE417770FD900248860 /* dark_background@2x.png in Resources */,
+				056D5DE517770FD900248860 /* gray_background.png in Resources */,
+				056D5DE617770FD900248860 /* gray_background@2x.png in Resources */,
+				056D5DE91777149400248860 /* gray_blue_background_small.png in Resources */,
+				056D5DEA1777149400248860 /* gray_blue_background_small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,7 +449,7 @@
 				0527CCCC17663E2F0065D19B /* UIImageView+AFNetworking.m in Sources */,
 				0527CCE91766465B0065D19B /* SLAppManager.m in Sources */,
 				0527CCEC176646740065D19B /* SLLocationManager.m in Sources */,
-				0527CCF41766602D0065D19B /* SLMainViewController.m in Sources */,
+				0527CCF41766602D0065D19B /* SLLocationDetailViewController.m in Sources */,
 				051A31011770E9B30064C20D /* SLMapViewController.m in Sources */,
 				05D378661776007900D0F730 /* SLConstants.m in Sources */,
 			);

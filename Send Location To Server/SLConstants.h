@@ -7,4 +7,6 @@
 //
 
 extern NSString * const UPDATE_LOCATION_NOTIFICATION;
+extern NSString * const SEND_LOCATION_NOTIFICATION;
 
+extern NSString * const SEND_LOCATION_ENABLED;

@@ -65,7 +65,7 @@
 
 - (void)setupRequestTimer {
     [self resetRequestTimer];
-    requestTimer = [NSTimer scheduledTimerWithTimeInterval:[self updateInterval] target:self selector:@selector(sendLocationToServer) userInfo:nil repeats:YES];
+    requestTimer = [NSTimer scheduledTimerWithTimeInterval:[self updateInterval] target:self selector:@selector(maybeSendLocationToServer) userInfo:nil repeats:YES];
 }
 
 - (void)resetRequestTimer {
@@ -77,7 +77,29 @@
     return 60.0;
 }
 
+- (void)maybeSendLocationToServer {
+    
+    if ([UserDefaults boolForKey:SEND_LOCATION_ENABLED]) {
+        [self sendLocationToServer];
+    }
+    
+}
+
 #pragma mark - public
+
+- (void)sendLocationToServer {
+    
+    CLLocation *currentLocation = _locationManager.locationManager.location;
+    
+    if (!currentLocation) {
+        return;
+    }
+    
+    lastUpdateDate = [NSDate new];
+    
+    [SLAppManager sendLocation:currentLocation withFinishBlock:nil];
+    
+}
 
 + (void)sendLocation:(CLLocation*)location withFinishBlock:(void(^)())callback {
     
@@ -113,7 +135,10 @@
     }];
     [operation start];
     
+    [NotificationCenter postNotificationName:SEND_LOCATION_NOTIFICATION object:location];
 }
+
+#pragma mark - requests
 
 + (NSMutableURLRequest*)customFormatRequestForLocation:(CLLocation*)location {
     
@@ -275,71 +300,5 @@
     notification.alertBody = message;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
-
-- (void)sendLocationToServer {
-    
-    CLLocation *currentLocation = _locationManager.locationManager.location;
-    
-    if (!currentLocation) {
-        return;
-    }
-    
-    lastUpdateDate = [NSDate new];
-    
-    [SLAppManager sendLocation:currentLocation withFinishBlock:nil];
-    
-//    [SLAppManager sendLocation:currentLocation withFinishBlock:nil];
-//    return;
-    
-    /*
-     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self hostname]]];
-     
-     NSLog(@"def value for header:   %@",[client defaultValueForHeader:@"User-Agent"]);
-     
-     [client setDefaultHeader:@"User-Agent" value:@"SendLocation (iPhone; iOS 6.1.4; Scale/2.00)"];
-     
-     NSMutableURLRequest *request = [client requestWithMethod:@"GET" path:@"/?imei=013411001582430&lat=56.671478&lon=43.465025&speed=-1.000000&heading=-1.000000&vacc=10.000000&hacc=1414.000000&altitude=116.273415&deviceid=" parameters:nil];
-     
-     //NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"/gprmc/Data?acct=testandr&dev=test01&gprmc=$GPRMC,204902,A,5640.2307,N,04327.5038,E,000.0,000.0,110613,,*11" parameters:nil];
-     
-     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-     NSLog(@"sendLocationToServer %@", JSON);
-     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-     NSLog(@"sendLocationToServer Fail %@",JSON);
-     }];
-     [operation start];
-     */
-    /*
-     From Android
-     POST /gprmc/Data?acct=testandr&dev=test01&gprmc=$GPRMC,204102,A,5640.2307,N,04327.5038,E,000.0,000.0,110613,,*11 HTTP/1.1
-     Content-Length: 1
-     Content-Type: application/x-www-form-urlencoded
-     Host: tr.gpshome.ru:20100
-     Connection: Keep-Alive
-     */
-    
-    
-//    NSArray *timeAndDate = [SLAppManager devideTimeAndDate];
-//    NSLog(@"\ntime: %@\ndate: %@",timeAndDate[0], timeAndDate[1]);
-//    
-//    NSLog(@"latitude: %@", [SLAppManager latitudeForCLLocationDegrees:currentLocation.coordinate.latitude]);
-//    NSLog(@"longitude: %@", [SLAppManager longitudeForCLLocationDegrees:currentLocation.coordinate.longitude]);
-//    
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://tr.gpshome.ru:20100/gprmc/Data?acct=testandr&dev=test01&gprmc=$GPRMC,%@,A,%@,%@,000.0,000.0,%@,,*11",timeAndDate[0],[SLAppManager latitudeForCLLocationDegrees:currentLocation.coordinate.latitude], [SLAppManager longitudeForCLLocationDegrees:currentLocation.coordinate.longitude], timeAndDate[1]]]
-//                                                           cachePolicy:NSURLRequestReloadIgnoringCacheData
-//                                                       timeoutInterval:10];
-//     [request setHTTPMethod:@"POST"];
-//     NSURLResponse *response;
-//     NSError *error = nil;
-//     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-//     
-//     if (error) {
-//     NSLog(@"launch Request error:%@", error.description);
-//     }else{
-//     NSLog(@"launch response:\n%@", [[NSString alloc] initWithBytes:data.bytes length:data.length encoding:NSUTF8StringEncoding]);
-//     }
-    
-}
-
 
 @end

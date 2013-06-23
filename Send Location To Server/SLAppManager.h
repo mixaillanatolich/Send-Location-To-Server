@@ -17,10 +17,7 @@
 
 + (void)showLocalNotificationForTestWithMessage:(NSString*)message;
 
-
-
 - (void)sendLocationToServer;
-
 
 @property (nonatomic, strong) SLLocationManager *locationManager;
 

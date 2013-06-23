@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SLMainViewController : UIViewController
+@interface SLLocationDetailViewController : UIViewController
 
 @end
