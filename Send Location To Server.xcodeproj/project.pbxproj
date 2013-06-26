@@ -47,6 +47,7 @@
 		0527CCEF176650330065D19B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CCEE176650330065D19B /* CoreTelephony.framework */; };
 		0527CCF117665DF00065D19B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CCF017665DF00065D19B /* MapKit.framework */; };
 		0527CCF41766602D0065D19B /* SLLocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCF31766602D0065D19B /* SLLocationDetailViewController.m */; };
+		055C2A05177B67AD0006EBF8 /* SLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055C2A04177B67AD0006EBF8 /* SLSettingsViewController.m */; };
 		056D5DE317770FD900248860 /* dark_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DDF17770FD900248860 /* dark_background.png */; };
 		056D5DE417770FD900248860 /* dark_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE017770FD900248860 /* dark_background@2x.png */; };
 		056D5DE517770FD900248860 /* gray_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE117770FD900248860 /* gray_background.png */; };
@@ -129,6 +130,8 @@
 		0527CCF017665DF00065D19B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0527CCF21766602D0065D19B /* SLLocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLocationDetailViewController.h; sourceTree = "<group>"; };
 		0527CCF31766602D0065D19B /* SLLocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLocationDetailViewController.m; sourceTree = "<group>"; };
+		055C2A03177B67AD0006EBF8 /* SLSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSettingsViewController.h; sourceTree = "<group>"; };
+		055C2A04177B67AD0006EBF8 /* SLSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSettingsViewController.m; sourceTree = "<group>"; };
 		056D5DDF17770FD900248860 /* dark_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_background.png; sourceTree = "<group>"; };
 		056D5DE017770FD900248860 /* dark_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark_background@2x.png"; sourceTree = "<group>"; };
 		056D5DE117770FD900248860 /* gray_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_background.png; sourceTree = "<group>"; };
@@ -244,6 +247,8 @@
 				0527CCF31766602D0065D19B /* SLLocationDetailViewController.m */,
 				051A30FF1770E9B30064C20D /* SLMapViewController.h */,
 				051A31001770E9B30064C20D /* SLMapViewController.m */,
+				055C2A03177B67AD0006EBF8 /* SLSettingsViewController.h */,
+				055C2A04177B67AD0006EBF8 /* SLSettingsViewController.m */,
 				0527CC7C17663AB60065D19B /* Supporting Files */,
 			);
 			path = "Send Location To Server";
@@ -452,6 +457,7 @@
 				0527CCF41766602D0065D19B /* SLLocationDetailViewController.m in Sources */,
 				051A31011770E9B30064C20D /* SLMapViewController.m in Sources */,
 				05D378661776007900D0F730 /* SLConstants.m in Sources */,
+				055C2A05177B67AD0006EBF8 /* SLSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

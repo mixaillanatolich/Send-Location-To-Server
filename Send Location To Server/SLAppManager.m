@@ -36,6 +36,18 @@
 
 - (id)init {
     if (self = [super init]) {
+        
+        if (![UserDefaults boolForKey:NOT_FIRST_START]) {
+            [UserDefaults setBool:YES forKey:SEND_LOCATION_IN_BACKGROUND_SETTING];
+            [UserDefaults setBool:NO forKey:NOT_TURN_OFF_DISPLAY_SETTING];
+            [UserDefaults setInteger:DEFAULT_LOGGIN_INTERVAL forKey:LOGGIN_INTERVAL_SETTING];
+            
+            [UserDefaults setBool:YES forKey:NOT_FIRST_START];
+            [UserDefaults synchronize];
+        }
+        
+        [[UIApplication sharedApplication] setIdleTimerDisabled:[UserDefaults boolForKey:NOT_TURN_OFF_DISPLAY_SETTING]];
+        
         self.locationManager = [SLLocationManager sharedManager];
         [_locationManager startUpdatingLocation];
         
@@ -74,7 +86,11 @@
 }
 
 - (NSTimeInterval)updateInterval {
-    return 60.0;
+    NSInteger loginInterval = [UserDefaults integerForKey:LOGGIN_INTERVAL_SETTING];
+    if (loginInterval <= 0) {
+        loginInterval = DEFAULT_LOGGIN_INTERVAL;
+    }
+    return loginInterval;
 }
 
 - (void)maybeSendLocationToServer {

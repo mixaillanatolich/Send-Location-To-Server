@@ -56,14 +56,16 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
 
 - (void)applicationDidEnterBackground {
     [self.locationManager stopUpdatingLocation];
-    [self.locationManager startMonitoringSignificantLocationChanges];
+    if ([UserDefaults boolForKey:SEND_LOCATION_IN_BACKGROUND_SETTING]) {
+        [self.locationManager startMonitoringSignificantLocationChanges];
+    }
 }
 
 #pragma mark - Public
 
 - (void)startUpdatingLocation {
     [self stopUpdatingLocation];
-    [self isInBackground] ? [self.locationManager startMonitoringSignificantLocationChanges] : [self.locationManager startUpdatingLocation];
+    [self isInBackground] ? ([UserDefaults boolForKey:SEND_LOCATION_IN_BACKGROUND_SETTING] ? [self.locationManager startMonitoringSignificantLocationChanges] : [self.locationManager stopMonitoringSignificantLocationChanges]) : [self.locationManager startUpdatingLocation];
 }
 
 - (void)stopUpdatingLocation {
