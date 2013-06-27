@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0516093C177CBBD700E63B47 /* SLLoggingIntervalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0516093B177CBBD700E63B47 /* SLLoggingIntervalViewController.m */; };
 		051A31011770E9B30064C20D /* SLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051A31001770E9B30064C20D /* SLMapViewController.m */; };
 		051A310C1770F3970064C20D /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A31031770F3970064C20D /* location.png */; };
 		051A310D1770F3970064C20D /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 051A31041770F3970064C20D /* location@2x.png */; };
@@ -70,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0516093A177CBBD700E63B47 /* SLLoggingIntervalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLoggingIntervalViewController.h; sourceTree = "<group>"; };
+		0516093B177CBBD700E63B47 /* SLLoggingIntervalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLoggingIntervalViewController.m; sourceTree = "<group>"; };
 		051A30FF1770E9B30064C20D /* SLMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMapViewController.h; sourceTree = "<group>"; };
 		051A31001770E9B30064C20D /* SLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMapViewController.m; sourceTree = "<group>"; };
 		051A31031770F3970064C20D /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 				051A31001770E9B30064C20D /* SLMapViewController.m */,
 				055C2A03177B67AD0006EBF8 /* SLSettingsViewController.h */,
 				055C2A04177B67AD0006EBF8 /* SLSettingsViewController.m */,
+				0516093A177CBBD700E63B47 /* SLLoggingIntervalViewController.h */,
+				0516093B177CBBD700E63B47 /* SLLoggingIntervalViewController.m */,
 				0527CC7C17663AB60065D19B /* Supporting Files */,
 			);
 			path = "Send Location To Server";
@@ -458,6 +463,7 @@
 				051A31011770E9B30064C20D /* SLMapViewController.m in Sources */,
 				05D378661776007900D0F730 /* SLConstants.m in Sources */,
 				055C2A05177B67AD0006EBF8 /* SLSettingsViewController.m in Sources */,
+				0516093C177CBBD700E63B47 /* SLLoggingIntervalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
