@@ -182,7 +182,13 @@
      altitude=116.273415&
      deviceid=" */
     
-    NSMutableURLRequest *request = [client requestWithMethod:@"GET" path:nil parameters:params];
+    NSString *httpMethod = [UserDefaults valueForKey:TYPE_OF_HTTP_METHOD_SETTING];
+    
+    if (![httpMethod isEqualToString:@"POST"] && ![httpMethod isEqualToString:@"GET"]) {
+        httpMethod = @"GET";
+    }
+    
+    NSMutableURLRequest *request = [client requestWithMethod:httpMethod path:nil parameters:params];
     [request setTimeoutInterval:15];
     
     return request;
@@ -202,7 +208,13 @@
     
     NSString *param = [NSString stringWithFormat:@"%@?acct=%@&dev=%@&gprmc=%@",[SLAppManager pathOnServer], [SLAppManager deviceId], [SLAppManager deviceId], gprmc];
     
-    NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:param parameters:nil];
+    NSString *httpMethod = [UserDefaults valueForKey:TYPE_OF_HTTP_METHOD_SETTING];
+    
+    if (![httpMethod isEqualToString:@"POST"] && ![httpMethod isEqualToString:@"GET"]) {
+        httpMethod = @"GET";
+    }
+    
+    NSMutableURLRequest *request = [client requestWithMethod:httpMethod path:param parameters:nil];
     [request setTimeoutInterval:15];
     
     return request;

@@ -11,6 +11,7 @@
 @interface SLSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UISwitch *backgroundSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *notSleepSwitch;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *httpMethodSwitch;
 
 @end
 
@@ -38,11 +39,22 @@
     [_backgroundSwitch setOn:[UserDefaults boolForKey:SEND_LOCATION_IN_BACKGROUND_SETTING]];
     [_notSleepSwitch setOn:[UserDefaults boolForKey:NOT_TURN_OFF_DISPLAY_SETTING]];
     
+    NSString *httpMethod = [UserDefaults valueForKey:TYPE_OF_HTTP_METHOD_SETTING];
+    
+    if ([httpMethod isEqualToString:@"POST"]) {
+        _httpMethodSwitch.selectedSegmentIndex = 1;
+    } else if ([httpMethod isEqualToString:@"GET"]) {
+        _httpMethodSwitch.selectedSegmentIndex = 0;
+    } else {
+        _httpMethodSwitch.selectedSegmentIndex = 0;
+    }
+    
 }
 
 - (void)viewDidUnload {
     [self setBackgroundSwitch:nil];
     [self setNotSleepSwitch:nil];
+    [self setHttpMethodSwitch:nil];
     [super viewDidUnload];
 }
 
@@ -150,6 +162,22 @@
     [UserDefaults synchronize];
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:[UserDefaults boolForKey:NOT_TURN_OFF_DISPLAY_SETTING]];
+}
+
+- (IBAction)httpMethodChanged:(id)sender {
+    switch (_httpMethodSwitch.selectedSegmentIndex){
+        case 0:
+            [UserDefaults setValue:@"GET" forKey:TYPE_OF_HTTP_METHOD_SETTING];
+            break;
+        case 1:
+            [UserDefaults setValue:@"POST" forKey:TYPE_OF_HTTP_METHOD_SETTING];
+            break;
+        default:
+            [UserDefaults setValue:@"GET" forKey:TYPE_OF_HTTP_METHOD_SETTING];
+            break;
+    }
+    
+    [UserDefaults synchronize];
 }
 
 @end
