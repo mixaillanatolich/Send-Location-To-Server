@@ -55,6 +55,9 @@
 		056D5DE617770FD900248860 /* gray_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE217770FD900248860 /* gray_background@2x.png */; };
 		056D5DE91777149400248860 /* gray_blue_background_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE71777149400248860 /* gray_blue_background_small.png */; };
 		056D5DEA1777149400248860 /* gray_blue_background_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE81777149400248860 /* gray_blue_background_small@2x.png */; };
+		057655B81781FE0300720EB7 /* SLDeviceIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057655B71781FE0300720EB7 /* SLDeviceIDViewController.m */; };
+		057655BB1781FE1B00720EB7 /* SLAccountIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057655BA1781FE1B00720EB7 /* SLAccountIDViewController.m */; };
+		057655BE17820E1A00720EB7 /* SLRequestFormatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057655BD17820E1A00720EB7 /* SLRequestFormatViewController.m */; };
 		05D378661776007900D0F730 /* SLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D378651776007900D0F730 /* SLConstants.m */; };
 		05D378691776035500D0F730 /* UserPosition.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D378671776035500D0F730 /* UserPosition.png */; };
 		05D3786A1776035500D0F730 /* UserPosition@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D378681776035500D0F730 /* UserPosition@2x.png */; };
@@ -141,6 +144,12 @@
 		056D5DE217770FD900248860 /* gray_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray_background@2x.png"; sourceTree = "<group>"; };
 		056D5DE71777149400248860 /* gray_blue_background_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_blue_background_small.png; sourceTree = "<group>"; };
 		056D5DE81777149400248860 /* gray_blue_background_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray_blue_background_small@2x.png"; sourceTree = "<group>"; };
+		057655B61781FE0300720EB7 /* SLDeviceIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLDeviceIDViewController.h; sourceTree = "<group>"; };
+		057655B71781FE0300720EB7 /* SLDeviceIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLDeviceIDViewController.m; sourceTree = "<group>"; };
+		057655B91781FE1B00720EB7 /* SLAccountIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAccountIDViewController.h; sourceTree = "<group>"; };
+		057655BA1781FE1B00720EB7 /* SLAccountIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAccountIDViewController.m; sourceTree = "<group>"; };
+		057655BC17820E1A00720EB7 /* SLRequestFormatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRequestFormatViewController.h; sourceTree = "<group>"; };
+		057655BD17820E1A00720EB7 /* SLRequestFormatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRequestFormatViewController.m; sourceTree = "<group>"; };
 		05D378641775FE5200D0F730 /* SLConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLConstants.h; sourceTree = "<group>"; };
 		05D378651776007900D0F730 /* SLConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLConstants.m; sourceTree = "<group>"; };
 		05D378671776035500D0F730 /* UserPosition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserPosition.png; sourceTree = "<group>"; };
@@ -254,6 +263,12 @@
 				055C2A04177B67AD0006EBF8 /* SLSettingsViewController.m */,
 				0516093A177CBBD700E63B47 /* SLLoggingIntervalViewController.h */,
 				0516093B177CBBD700E63B47 /* SLLoggingIntervalViewController.m */,
+				057655B61781FE0300720EB7 /* SLDeviceIDViewController.h */,
+				057655B71781FE0300720EB7 /* SLDeviceIDViewController.m */,
+				057655B91781FE1B00720EB7 /* SLAccountIDViewController.h */,
+				057655BA1781FE1B00720EB7 /* SLAccountIDViewController.m */,
+				057655BC17820E1A00720EB7 /* SLRequestFormatViewController.h */,
+				057655BD17820E1A00720EB7 /* SLRequestFormatViewController.m */,
 				0527CC7C17663AB60065D19B /* Supporting Files */,
 			);
 			path = "Send Location To Server";
@@ -464,6 +479,9 @@
 				05D378661776007900D0F730 /* SLConstants.m in Sources */,
 				055C2A05177B67AD0006EBF8 /* SLSettingsViewController.m in Sources */,
 				0516093C177CBBD700E63B47 /* SLLoggingIntervalViewController.m in Sources */,
+				057655B81781FE0300720EB7 /* SLDeviceIDViewController.m in Sources */,
+				057655BB1781FE1B00720EB7 /* SLAccountIDViewController.m in Sources */,
+				057655BE17820E1A00720EB7 /* SLRequestFormatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

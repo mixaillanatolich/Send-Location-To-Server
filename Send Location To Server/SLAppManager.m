@@ -96,7 +96,15 @@
 - (void)maybeSendLocationToServer {
     
     if ([UserDefaults boolForKey:SEND_LOCATION_ENABLED]) {
-        [self sendLocationToServer];
+        CLLocation *currentLocation = _locationManager.locationManager.location;
+        
+        if (!currentLocation) {
+            return;
+        }
+        
+        lastUpdateDate = [NSDate new];
+        
+        [SLAppManager sendLocation:currentLocation force:NO withFinishBlock:nil];
     }
     
 }
@@ -113,22 +121,34 @@
     
     lastUpdateDate = [NSDate new];
     
-    [SLAppManager sendLocation:currentLocation withFinishBlock:nil];
+    [SLAppManager sendLocation:currentLocation force:YES withFinishBlock:nil];
     
 }
 
 + (void)sendLocation:(CLLocation*)location withFinishBlock:(void(^)())callback {
+    [SLAppManager sendLocation:location force:NO withFinishBlock:callback];
+}
+
++ (void)sendLocation:(CLLocation*)location force:(BOOL)force withFinishBlock:(void(^)())callback {
     
     if (!location) {
-        callback();
+        if (callback) {
+            callback();
+        }
+        return;
+    }
+    
+    if (![UserDefaults boolForKey:SEND_LOCATION_ENABLED] && !force) {
+        if (callback) {
+            callback();
+        }
         return;
     }
     
     NSMutableURLRequest *request;
     
-    //testing
-    int typeOfRequest;
-    typeOfRequest = 1;
+    
+    int typeOfRequest = [UserDefaults integerForKey:TYPE_OF_REQUEST_SETTING];
     
     if (typeOfRequest == 0) {
         request = [SLAppManager customFormatRequestForLocation:location];
@@ -162,25 +182,36 @@
     
     [client setDefaultHeader:@"User-Agent" value:[NSString stringWithFormat:@"SendLocation %@", [client defaultValueForHeader:@"User-Agent"]]];
     
-    NSDictionary *params = @{@"imei": [self CTGetIMEI],
-                             @"lat" : [NSString stringWithFormat:@"%.6f", location.coordinate.latitude],
-                             @"lon" : [NSString stringWithFormat:@"%.6f", location.coordinate.longitude],
-                             @"speed" : [NSString stringWithFormat:@"%.6f", location.speed],
-                             @"heading" : [NSString stringWithFormat:@"%.6f", location.course],
-                             @"vacc" : [NSString stringWithFormat:@"%.6f", location.verticalAccuracy],
-                             @"hacc" : [NSString stringWithFormat:@"%.6f", location.horizontalAccuracy],
-                             @"altitude" : [NSString stringWithFormat:@"%.6f", location.altitude],
-                             @"deviceid" : @""};
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{
+                                @"lat" : [NSString stringWithFormat:@"%.6f", location.coordinate.latitude],
+                                @"lon" : [NSString stringWithFormat:@"%.6f", location.coordinate.longitude],
+                                @"speed" : [NSString stringWithFormat:@"%.6f", location.speed],
+                                @"heading" : [NSString stringWithFormat:@"%.6f", location.course],
+                                @"vacc" : [NSString stringWithFormat:@"%.6f", location.verticalAccuracy],
+                                @"hacc" : [NSString stringWithFormat:@"%.6f", location.horizontalAccuracy],
+                                @"altitude" : [NSString stringWithFormat:@"%.6f", location.altitude]
+                                }];
     
-    /*imei=013411001582430&
-     lat=56.671478&
-     lon=43.465025&
-     speed=-1.000000&
-     heading=-1.000000&
-     vacc=10.000000&
-     hacc=1414.000000&
-     altitude=116.273415&
-     deviceid=" */
+    
+    NSDictionary *additionalParams = [UserDefaults dictionaryForKey:ADDITIONAL_PARAMETERS_SETTING];
+    if (additionalParams && additionalParams.count) {
+        [params addEntriesFromDictionary:additionalParams];
+    }
+    
+    if ([UserDefaults boolForKey:SEND_DEVICE_ID_SETTING]) {
+        [params setObject:([UserDefaults objectForKey:DEVICE_ID_SETTING] ? [UserDefaults objectForKey:DEVICE_ID_SETTING] : @"") forKey:@"deviceid"];
+    }
+    
+    if ([UserDefaults boolForKey:SEND_ACCOUNT_ID_SETTING]) {
+        [params setObject:([UserDefaults objectForKey:ACCOUNT_ID_SETTING] ? [UserDefaults objectForKey:ACCOUNT_ID_SETTING] : @"") forKey:@"accountid"];
+    }
+    
+    
+    
+#warning test
+    [params setObject:[self CTGetIMEI] forKey:@"imei"];
+    
+    
     
     NSString *httpMethod = [UserDefaults valueForKey:TYPE_OF_HTTP_METHOD_SETTING];
     
@@ -200,13 +231,41 @@
     
     NSArray *timeAndDate = [SLAppManager devideTimeAndDate];
     
-    NSString *gprmc = [NSString stringWithFormat:@"$GPRMC,%@,A,%@,%@,%@,%04.1f,%@,,*", timeAndDate[0],[SLAppManager latitudeForCLLocationDegrees:location.coordinate.latitude], [SLAppManager longitudeForCLLocationDegrees:location.coordinate.longitude], [SLAppManager speedToKnots:location.speed], (location.course >= 0.0 ? location.course : 0.0),timeAndDate[1]];
+    NSString *gprmc = [NSString stringWithFormat:@"gprmc=$GPRMC,%@,A,%@,%@,%@,%04.1f,%@,,*", timeAndDate[0],[SLAppManager latitudeForCLLocationDegrees:location.coordinate.latitude], [SLAppManager longitudeForCLLocationDegrees:location.coordinate.longitude], [SLAppManager speedToKnots:location.speed], (location.course >= 0.0 ? location.course : 0.0),timeAndDate[1]];
     
     gprmc = [gprmc stringByAppendingString:[SLAppManager xorString:gprmc]];
     
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self hostname]]];
     
-    NSString *param = [NSString stringWithFormat:@"%@?acct=%@&dev=%@&gprmc=%@",[SLAppManager pathOnServer], [SLAppManager deviceId], [SLAppManager deviceId], gprmc];
+    NSString *param = [NSString stringWithFormat:@"%@?%@",[SLAppManager pathOnServer], gprmc];
+    
+    NSDictionary *additionalParams = [UserDefaults dictionaryForKey:ADDITIONAL_PARAMETERS_SETTING];
+    if (additionalParams && additionalParams.count) {
+        for (NSString *key in additionalParams.allKeys) {
+            NSString *parameter = [NSString stringWithFormat:@"%@=%@",key,[additionalParams objectForKey:key]];
+            parameter = [parameter stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+            param = [param stringByAppendingFormat:@"&%@",parameter];
+        }
+    }
+    
+    if ([UserDefaults boolForKey:SEND_DEVICE_ID_SETTING]) {
+        NSString *deviceId = [NSString stringWithFormat:@"deviceid=%@",([UserDefaults objectForKey:DEVICE_ID_SETTING] ? [UserDefaults objectForKey:DEVICE_ID_SETTING] : @"")];
+        deviceId = [deviceId stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+        param = [param stringByAppendingFormat:@"&%@",deviceId];
+    }
+    
+    if ([UserDefaults boolForKey:SEND_ACCOUNT_ID_SETTING]) {
+        NSString *accountId = [NSString stringWithFormat:@"accountid=%@",([UserDefaults objectForKey:ACCOUNT_ID_SETTING] ? [UserDefaults objectForKey:ACCOUNT_ID_SETTING] : @"")];
+        accountId = [accountId stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+        param = [param stringByAppendingFormat:@"&%@",accountId];
+    }
+    
+    
+#warning for test
+    param = [param stringByAppendingFormat:@"&acct=%@",[SLAppManager deviceId]];
+    param = [param stringByAppendingFormat:@"&dev=%@",[SLAppManager deviceId]];
+    
+    
     
     NSString *httpMethod = [UserDefaults valueForKey:TYPE_OF_HTTP_METHOD_SETTING];
     

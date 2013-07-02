@@ -16,6 +16,8 @@ extern NSString * const TYPE_OF_REQUEST_SETTING;
 extern NSString * const TYPE_OF_HTTP_METHOD_SETTING;
 extern NSString * const DEVICE_ID_SETTING;
 extern NSString * const ACCOUNT_ID_SETTING;
+extern NSString * const SEND_DEVICE_ID_SETTING;
+extern NSString * const SEND_ACCOUNT_ID_SETTING;
 extern NSString * const ADDITIONAL_PARAMETERS_SETTING;
 
 extern NSString * const SEND_LOCATION_IN_BACKGROUND_SETTING;
