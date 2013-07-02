@@ -206,13 +206,6 @@
         [params setObject:([UserDefaults objectForKey:ACCOUNT_ID_SETTING] ? [UserDefaults objectForKey:ACCOUNT_ID_SETTING] : @"") forKey:@"accountid"];
     }
     
-    
-    
-#warning test
-    [params setObject:[self CTGetIMEI] forKey:@"imei"];
-    
-    
-    
     NSString *httpMethod = [UserDefaults valueForKey:TYPE_OF_HTTP_METHOD_SETTING];
     
     if (![httpMethod isEqualToString:@"POST"] && ![httpMethod isEqualToString:@"GET"]) {
@@ -259,13 +252,6 @@
         accountId = [accountId stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
         param = [param stringByAppendingFormat:@"&%@",accountId];
     }
-    
-    
-#warning for test
-    param = [param stringByAppendingFormat:@"&acct=%@",[SLAppManager deviceId]];
-    param = [param stringByAppendingFormat:@"&dev=%@",[SLAppManager deviceId]];
-    
-    
     
     NSString *httpMethod = [UserDefaults valueForKey:TYPE_OF_HTTP_METHOD_SETTING];
     

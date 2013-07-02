@@ -49,6 +49,8 @@
 		0527CCF117665DF00065D19B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527CCF017665DF00065D19B /* MapKit.framework */; };
 		0527CCF41766602D0065D19B /* SLLocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527CCF31766602D0065D19B /* SLLocationDetailViewController.m */; };
 		055C2A05177B67AD0006EBF8 /* SLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055C2A04177B67AD0006EBF8 /* SLSettingsViewController.m */; };
+		055C8A28178351A5000E60CD /* SLAdditionalParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055C8A27178351A5000E60CD /* SLAdditionalParametersViewController.m */; };
+		055C8A2D17835EDD000E60CD /* SLUserParameterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055C8A2C17835EDD000E60CD /* SLUserParameterViewController.m */; };
 		056D5DE317770FD900248860 /* dark_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DDF17770FD900248860 /* dark_background.png */; };
 		056D5DE417770FD900248860 /* dark_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE017770FD900248860 /* dark_background@2x.png */; };
 		056D5DE517770FD900248860 /* gray_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE117770FD900248860 /* gray_background.png */; };
@@ -138,6 +140,10 @@
 		0527CCF31766602D0065D19B /* SLLocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLocationDetailViewController.m; sourceTree = "<group>"; };
 		055C2A03177B67AD0006EBF8 /* SLSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSettingsViewController.h; sourceTree = "<group>"; };
 		055C2A04177B67AD0006EBF8 /* SLSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSettingsViewController.m; sourceTree = "<group>"; };
+		055C8A26178351A5000E60CD /* SLAdditionalParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAdditionalParametersViewController.h; sourceTree = "<group>"; };
+		055C8A27178351A5000E60CD /* SLAdditionalParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAdditionalParametersViewController.m; sourceTree = "<group>"; };
+		055C8A2B17835EDD000E60CD /* SLUserParameterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUserParameterViewController.h; sourceTree = "<group>"; };
+		055C8A2C17835EDD000E60CD /* SLUserParameterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUserParameterViewController.m; sourceTree = "<group>"; };
 		056D5DDF17770FD900248860 /* dark_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_background.png; sourceTree = "<group>"; };
 		056D5DE017770FD900248860 /* dark_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark_background@2x.png"; sourceTree = "<group>"; };
 		056D5DE117770FD900248860 /* gray_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_background.png; sourceTree = "<group>"; };
@@ -245,30 +251,11 @@
 		0527CC7B17663AB60065D19B /* Send Location To Server */ = {
 			isa = PBXGroup;
 			children = (
-				05D378641775FE5200D0F730 /* SLConstants.h */,
-				05D378651776007900D0F730 /* SLConstants.m */,
-				0527CCE71766465B0065D19B /* SLAppManager.h */,
-				0527CCE81766465B0065D19B /* SLAppManager.m */,
-				0527CCEA176646740065D19B /* SLLocationManager.h */,
-				0527CCEB176646740065D19B /* SLLocationManager.m */,
+				055C8A2A178351D1000E60CD /* Views */,
+				055C8A29178351BD000E60CD /* Core */,
 				0527CC8417663AB60065D19B /* SLAppDelegate.h */,
 				0527CC8517663AB60065D19B /* SLAppDelegate.m */,
 				0527CCED17664F740065D19B /* CoreTelephony.h */,
-				0527CC8D17663AB60065D19B /* MainStoryboard.storyboard */,
-				0527CCF21766602D0065D19B /* SLLocationDetailViewController.h */,
-				0527CCF31766602D0065D19B /* SLLocationDetailViewController.m */,
-				051A30FF1770E9B30064C20D /* SLMapViewController.h */,
-				051A31001770E9B30064C20D /* SLMapViewController.m */,
-				055C2A03177B67AD0006EBF8 /* SLSettingsViewController.h */,
-				055C2A04177B67AD0006EBF8 /* SLSettingsViewController.m */,
-				0516093A177CBBD700E63B47 /* SLLoggingIntervalViewController.h */,
-				0516093B177CBBD700E63B47 /* SLLoggingIntervalViewController.m */,
-				057655B61781FE0300720EB7 /* SLDeviceIDViewController.h */,
-				057655B71781FE0300720EB7 /* SLDeviceIDViewController.m */,
-				057655B91781FE1B00720EB7 /* SLAccountIDViewController.h */,
-				057655BA1781FE1B00720EB7 /* SLAccountIDViewController.m */,
-				057655BC17820E1A00720EB7 /* SLRequestFormatViewController.h */,
-				057655BD17820E1A00720EB7 /* SLRequestFormatViewController.m */,
 				0527CC7C17663AB60065D19B /* Supporting Files */,
 			);
 			path = "Send Location To Server";
@@ -331,6 +318,45 @@
 				0527CCC317663E2F0065D19B /* UIImageView+AFNetworking.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		055C8A29178351BD000E60CD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				05D378641775FE5200D0F730 /* SLConstants.h */,
+				05D378651776007900D0F730 /* SLConstants.m */,
+				0527CCE71766465B0065D19B /* SLAppManager.h */,
+				0527CCE81766465B0065D19B /* SLAppManager.m */,
+				0527CCEA176646740065D19B /* SLLocationManager.h */,
+				0527CCEB176646740065D19B /* SLLocationManager.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		055C8A2A178351D1000E60CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0527CC8D17663AB60065D19B /* MainStoryboard.storyboard */,
+				0527CCF21766602D0065D19B /* SLLocationDetailViewController.h */,
+				0527CCF31766602D0065D19B /* SLLocationDetailViewController.m */,
+				051A30FF1770E9B30064C20D /* SLMapViewController.h */,
+				051A31001770E9B30064C20D /* SLMapViewController.m */,
+				055C2A03177B67AD0006EBF8 /* SLSettingsViewController.h */,
+				055C2A04177B67AD0006EBF8 /* SLSettingsViewController.m */,
+				0516093A177CBBD700E63B47 /* SLLoggingIntervalViewController.h */,
+				0516093B177CBBD700E63B47 /* SLLoggingIntervalViewController.m */,
+				057655B61781FE0300720EB7 /* SLDeviceIDViewController.h */,
+				057655B71781FE0300720EB7 /* SLDeviceIDViewController.m */,
+				057655B91781FE1B00720EB7 /* SLAccountIDViewController.h */,
+				057655BA1781FE1B00720EB7 /* SLAccountIDViewController.m */,
+				057655BC17820E1A00720EB7 /* SLRequestFormatViewController.h */,
+				057655BD17820E1A00720EB7 /* SLRequestFormatViewController.m */,
+				055C8A26178351A5000E60CD /* SLAdditionalParametersViewController.h */,
+				055C8A27178351A5000E60CD /* SLAdditionalParametersViewController.m */,
+				055C8A2B17835EDD000E60CD /* SLUserParameterViewController.h */,
+				055C8A2C17835EDD000E60CD /* SLUserParameterViewController.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,6 +508,8 @@
 				057655B81781FE0300720EB7 /* SLDeviceIDViewController.m in Sources */,
 				057655BB1781FE1B00720EB7 /* SLAccountIDViewController.m in Sources */,
 				057655BE17820E1A00720EB7 /* SLRequestFormatViewController.m in Sources */,
+				055C8A28178351A5000E60CD /* SLAdditionalParametersViewController.m in Sources */,
+				055C8A2D17835EDD000E60CD /* SLUserParameterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

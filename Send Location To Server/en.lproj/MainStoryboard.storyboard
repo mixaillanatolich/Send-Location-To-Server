@@ -609,10 +609,10 @@ gprmc=$GPRMC,hhmmss.ss,A,GGMM.MM,P,gggmm.mm,J,v.v,b.b,ddmmyy,x.x,n*hh
             </objects>
             <point key="canvasLocation" x="2318" y="1462"/>
         </scene>
-        <!--View Controller - Additional parameters-->
+        <!--Additional Parameters View Controller - User parameters-->
         <scene sceneID="PXc-cn-pCi">
             <objects>
-                <viewController id="r0I-hH-Rox" sceneMemberID="viewController">
+                <viewController id="r0I-hH-Rox" customClass="SLAdditionalParametersViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KJY-uk-zIk">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -621,18 +621,119 @@ gprmc=$GPRMC,hhmmss.ss,A,GGMM.MM,P,gggmm.mm,J,v.v,b.b,ddmmyy,x.x,n*hh
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ParameterCell" id="Rda-Dl-tkW">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" text="Key = Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dhF-Sa-goC">
+                                                    <rect key="frame" x="20" y="11" width="267" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="r0I-hH-Rox" id="dhU-LU-88o"/>
+                                    <outlet property="delegate" destination="r0I-hH-Rox" id="MDo-zM-rMd"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Additional parameters" id="Ebw-dr-xv4">
+                    <navigationItem key="navigationItem" title="User parameters" id="Ebw-dr-xv4">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Zbx-Jb-U4U"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sDc-Jk-9Z1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sDc-Jk-9Z1">
+                            <connections>
+                                <action selector="addNewParameterButtonClicked:" destination="r0I-hH-Rox" id="NVk-cB-GBX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="NHt-xj-S1s" id="Niz-0J-Gjy"/>
+                        <segue destination="5gc-2s-fqa" kind="push" identifier="showCustomParameter" id="gPN-ea-xnA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQ3-OJ-JQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2318" y="2071"/>
+        </scene>
+        <!--User Parameter View Controller - User parameter-->
+        <scene sceneID="A3d-qE-6VL">
+            <objects>
+                <viewController id="5gc-2s-fqa" customClass="SLUserParameterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HSL-en-d6s">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Add or edit custom parameter in request" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9t3-LY-Xpg">
+                                <rect key="frame" x="10" y="8" width="300" height="23"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Key:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PDZ-nR-xJi">
+                                <rect key="frame" x="10" y="39" width="49" height="27"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Value:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iJX-gB-t0f">
+                                <rect key="frame" x="10" y="74" width="49" height="27"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user key" minimumFontSize="17" id="ldW-PH-Y3h">
+                                <rect key="frame" x="67" y="38" width="243" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eDj-5P-dWz" id="Q12-pb-3Ru"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user value" minimumFontSize="17" id="izg-jv-bxn">
+                                <rect key="frame" x="67" y="73" width="243" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eDj-5P-dWz" id="zBn-TP-mqx"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="User parameter" id="bAV-43-s34">
+                        <barButtonItem key="rightBarButtonItem" title="Remove" id="Sls-Z9-PVn">
+                            <connections>
+                                <action selector="removeButtonClicked:" destination="5gc-2s-fqa" id="ytM-Pa-ALf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="keyTextField" destination="ldW-PH-Y3h" id="EJk-Cr-GjY"/>
+                        <outlet property="removeButton" destination="Sls-Z9-PVn" id="NBS-pk-ZJn"/>
+                        <outlet property="valueTextField" destination="izg-jv-bxn" id="uNT-bM-Q0Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eO9-PS-TSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2827" y="2071"/>
         </scene>
         <!--Logging Interval View Controller - Logging interval-->
         <scene sceneID="OEh-Hv-hrb">
