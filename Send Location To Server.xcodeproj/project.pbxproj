@@ -51,6 +51,7 @@
 		055C2A05177B67AD0006EBF8 /* SLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055C2A04177B67AD0006EBF8 /* SLSettingsViewController.m */; };
 		055C8A28178351A5000E60CD /* SLAdditionalParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055C8A27178351A5000E60CD /* SLAdditionalParametersViewController.m */; };
 		055C8A2D17835EDD000E60CD /* SLUserParameterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055C8A2C17835EDD000E60CD /* SLUserParameterViewController.m */; };
+		05650E5E1784B6EF0069F9E6 /* SLServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05650E5D1784B6EF0069F9E6 /* SLServerViewController.m */; };
 		056D5DE317770FD900248860 /* dark_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DDF17770FD900248860 /* dark_background.png */; };
 		056D5DE417770FD900248860 /* dark_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE017770FD900248860 /* dark_background@2x.png */; };
 		056D5DE517770FD900248860 /* gray_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 056D5DE117770FD900248860 /* gray_background.png */; };
@@ -144,6 +145,8 @@
 		055C8A27178351A5000E60CD /* SLAdditionalParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAdditionalParametersViewController.m; sourceTree = "<group>"; };
 		055C8A2B17835EDD000E60CD /* SLUserParameterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUserParameterViewController.h; sourceTree = "<group>"; };
 		055C8A2C17835EDD000E60CD /* SLUserParameterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUserParameterViewController.m; sourceTree = "<group>"; };
+		05650E5C1784B6EF0069F9E6 /* SLServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLServerViewController.h; sourceTree = "<group>"; };
+		05650E5D1784B6EF0069F9E6 /* SLServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLServerViewController.m; sourceTree = "<group>"; };
 		056D5DDF17770FD900248860 /* dark_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_background.png; sourceTree = "<group>"; };
 		056D5DE017770FD900248860 /* dark_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark_background@2x.png"; sourceTree = "<group>"; };
 		056D5DE117770FD900248860 /* gray_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_background.png; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 				055C8A27178351A5000E60CD /* SLAdditionalParametersViewController.m */,
 				055C8A2B17835EDD000E60CD /* SLUserParameterViewController.h */,
 				055C8A2C17835EDD000E60CD /* SLUserParameterViewController.m */,
+				05650E5C1784B6EF0069F9E6 /* SLServerViewController.h */,
+				05650E5D1784B6EF0069F9E6 /* SLServerViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 				057655BE17820E1A00720EB7 /* SLRequestFormatViewController.m in Sources */,
 				055C8A28178351A5000E60CD /* SLAdditionalParametersViewController.m in Sources */,
 				055C8A2D17835EDD000E60CD /* SLUserParameterViewController.m in Sources */,
+				05650E5E1784B6EF0069F9E6 /* SLServerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

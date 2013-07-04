@@ -71,19 +71,57 @@
             </objects>
             <point key="canvasLocation" x="1354" y="321"/>
         </scene>
-        <!--View Controller - Hostname-->
+        <!--Server View Controller - Hostname-->
         <scene sceneID="OFQ-7D-Cz0">
             <objects>
-                <viewController id="Wq6-ok-RZu" sceneMemberID="viewController">
+                <viewController id="Wq6-ok-RZu" customClass="SLServerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mNa-8z-dUw">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="nxy-Sd-ZYW">
+                                <rect key="frame" x="10" y="50" width="300" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="A5O-l6-6hh">
+                                <rect key="frame" x="0.0" y="0.0" width="328" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">Example:
+http://gpsserver.com:8080/gpsdata/script.php</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="lmf-bh-4W5">
+                                <rect key="frame" x="0.0" y="144" width="328" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">Enter:
+- your server name or IP address (required)
+- port number (if need)
+- server side directory (if need)
+- script (if need)
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Hostname" id="XlX-l1-DhL">
                         <barButtonItem key="backBarButtonItem" title="Back" id="X3R-48-OdK"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="dPh-mf-2AR"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="dPh-mf-2AR">
+                            <connections>
+                                <action selector="cancelButtonClicked:" destination="Wq6-ok-RZu" id="5wp-2t-sRu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="serverTextField" destination="nxy-Sd-ZYW" id="iT4-xt-sRp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTP-pW-mvY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,7 +157,8 @@
 
 - NMEA 0183 format (RMC string) in gprmc parameter:
 gprmc=$GPRMC,hhmmss.ss,A,GGMM.MM,P,gggmm.mm,J,v.v,b.b,ddmmyy,x.x,n*hh
- 1 = UTC of position fix
+
+1 = UTC of position fix
 2 = Data status (V=navigation receiver warning)
 3 = Latitude of fix
 4 = N or S

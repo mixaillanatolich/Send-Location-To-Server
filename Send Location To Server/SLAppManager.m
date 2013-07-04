@@ -158,6 +158,12 @@
         request = [SLAppManager NMEARequestForLocation:location];
     }
     
+    if (!request) {
+        if (callback) {
+            callback();
+        }
+    }
+    
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSLog(@"sendLocationToServer %@", JSON);
         if (callback) {
@@ -177,6 +183,10 @@
 #pragma mark - requests
 
 + (NSMutableURLRequest*)customFormatRequestForLocation:(CLLocation*)location {
+    
+    if (![self hostname] || ![self hostname].length) {
+        return nil;
+    }
     
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self hostname]]];
     
@@ -222,6 +232,10 @@
     
     //POST /gprmc/Data?acct=testandr&dev=test01&gprmc=$GPRMC,204102,A,5640.2307,N,04327.5038,E,000.0,000.0,110613,,*11
     
+    if (![self hostname] || ![self hostname].length) {
+        return nil;
+    }
+    
     NSArray *timeAndDate = [SLAppManager devideTimeAndDate];
     
     NSString *gprmc = [NSString stringWithFormat:@"gprmc=$GPRMC,%@,A,%@,%@,%@,%04.1f,%@,,*", timeAndDate[0],[SLAppManager latitudeForCLLocationDegrees:location.coordinate.latitude], [SLAppManager longitudeForCLLocationDegrees:location.coordinate.longitude], [SLAppManager speedToKnots:location.speed], (location.course >= 0.0 ? location.course : 0.0),timeAndDate[1]];
@@ -230,7 +244,8 @@
     
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self hostname]]];
     
-    NSString *param = [NSString stringWithFormat:@"%@?%@",[SLAppManager pathOnServer], gprmc];
+    //NSString *param = [NSString stringWithFormat:@"%@?%@",[SLAppManager pathOnServer], gprmc];
+    NSString *param = [NSString stringWithFormat:@"%@", gprmc];
     
     NSDictionary *additionalParams = [UserDefaults dictionaryForKey:ADDITIONAL_PARAMETERS_SETTING];
     if (additionalParams && additionalParams.count) {
@@ -268,20 +283,24 @@
 #pragma mark - private
 
 + (NSString*)hostname {
-    return [NSString stringWithFormat:@"http://tr.gpshome.ru:20100"];
+    return [UserDefaults objectForKey:SERVER_NAME_SETTING];
 }
 
-+ (NSString*)pathOnServer {
-    return [NSString stringWithFormat:@"/gprmc/Data"];
-}
+//+ (NSString*)hostname {
+//    return [NSString stringWithFormat:@"http://tr.gpshome.ru:20100"];
+//}
 
-+ (NSString*)deviceId {
-    return [NSString stringWithFormat:@"testandr"];
-}
-
-+ (NSString*)requestFormat {
-    return @"imei=%@lat=%@&lon=%@&speed=%@&heading=%@&vacc=%@&hacc=%@&altitude=%@";
-}
+//+ (NSString*)pathOnServer {
+//    return [NSString stringWithFormat:@"/gprmc/Data"];
+//}
+//
+//+ (NSString*)deviceId {
+//    return [NSString stringWithFormat:@"testandr"];
+//}
+//
+//+ (NSString*)requestFormat {
+//    return @"imei=%@lat=%@&lon=%@&speed=%@&heading=%@&vacc=%@&hacc=%@&altitude=%@";
+//}
 
 + (NSArray*)devideTimeAndDate {
     
