@@ -15,7 +15,6 @@
     
     NSDate *lastUpdateDate;
     
-    
     NSTimer *requestTimer;
 }
 
@@ -355,19 +354,19 @@
     return knots;
 }
 
-+ (NSString*)CTGetIMEI {
-    
-    struct CTResult it;
-    CFMutableDictionaryRef dict;
-    struct CTServerConnection *conn;
-    
-    conn = _CTServerConnectionCreate(kCFAllocatorDefault, callback, NULL);
-    
-    _CTServerConnectionCopyMobileEquipmentInfo(&it, conn, &dict);
-    CFRelease(conn);
-    
-    return (__bridge id)CFDictionaryGetValue(dict, (__bridge void *)kCTMobileEquipmentInfoIMEI);
-}
+//+ (NSString*)CTGetIMEI {
+//    
+//    struct CTResult it;
+//    CFMutableDictionaryRef dict;
+//    struct CTServerConnection *conn;
+//    
+//    conn = _CTServerConnectionCreate(kCFAllocatorDefault, callback, NULL);
+//    
+//    _CTServerConnectionCopyMobileEquipmentInfo(&it, conn, &dict);
+//    CFRelease(conn);
+//    
+//    return (__bridge id)CFDictionaryGetValue(dict, (__bridge void *)kCTMobileEquipmentInfoIMEI);
+//}
 
 + (NSString*)xorString:(NSString *)string {
     
@@ -387,10 +386,14 @@
 
 #pragma mark - debug
 + (void)showLocalNotificationForTestWithMessage:(NSString*)message {
+    
+#ifdef DEBUG
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:15];
     notification.alertBody = message;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+#endif
+    
 }
 
 @end
