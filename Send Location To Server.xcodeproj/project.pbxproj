@@ -61,6 +61,8 @@
 		057655B81781FE0300720EB7 /* SLDeviceIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057655B71781FE0300720EB7 /* SLDeviceIDViewController.m */; };
 		057655BB1781FE1B00720EB7 /* SLAccountIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057655BA1781FE1B00720EB7 /* SLAccountIDViewController.m */; };
 		057655BE17820E1A00720EB7 /* SLRequestFormatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057655BD17820E1A00720EB7 /* SLRequestFormatViewController.m */; };
+		059CCFB617A0562700BA2251 /* icon_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CCFB517A0562700BA2251 /* icon_114x114.png */; };
+		059CCFB817A0565300BA2251 /* icon_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CCFB717A0565300BA2251 /* icon_57x57.png */; };
 		05D378661776007900D0F730 /* SLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D378651776007900D0F730 /* SLConstants.m */; };
 		05D378691776035500D0F730 /* UserPosition.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D378671776035500D0F730 /* UserPosition.png */; };
 		05D3786A1776035500D0F730 /* UserPosition@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D378681776035500D0F730 /* UserPosition@2x.png */; };
@@ -159,6 +161,8 @@
 		057655BA1781FE1B00720EB7 /* SLAccountIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAccountIDViewController.m; sourceTree = "<group>"; };
 		057655BC17820E1A00720EB7 /* SLRequestFormatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRequestFormatViewController.h; sourceTree = "<group>"; };
 		057655BD17820E1A00720EB7 /* SLRequestFormatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRequestFormatViewController.m; sourceTree = "<group>"; };
+		059CCFB517A0562700BA2251 /* icon_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114x114.png; sourceTree = "<group>"; };
+		059CCFB717A0565300BA2251 /* icon_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57x57.png; sourceTree = "<group>"; };
 		05D378641775FE5200D0F730 /* SLConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLConstants.h; sourceTree = "<group>"; };
 		05D378651776007900D0F730 /* SLConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLConstants.m; sourceTree = "<group>"; };
 		05D378671776035500D0F730 /* UserPosition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserPosition.png; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 		0527CC6917663AB60065D19B = {
 			isa = PBXGroup;
 			children = (
+				059CCFB717A0565300BA2251 /* icon_57x57.png */,
+				059CCFB517A0562700BA2251 /* icon_114x114.png */,
 				051A31021770F3970064C20D /* Assets */,
 				0527CCB017663E2F0065D19B /* AFNetworking */,
 				0527CC7B17663AB60065D19B /* Send Location To Server */,
@@ -458,6 +464,8 @@
 				056D5DE617770FD900248860 /* gray_background@2x.png in Resources */,
 				056D5DE91777149400248860 /* gray_blue_background_small.png in Resources */,
 				056D5DEA1777149400248860 /* gray_blue_background_small@2x.png in Resources */,
+				059CCFB617A0562700BA2251 /* icon_114x114.png in Resources */,
+				059CCFB817A0565300BA2251 /* icon_57x57.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
