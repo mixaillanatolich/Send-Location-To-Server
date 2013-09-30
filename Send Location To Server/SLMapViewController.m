@@ -36,9 +36,17 @@
         _mapView.mapType = type.intValue;
     }
     
-    [_mapTypeControl setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor whiteColor]} forState:UIControlStateNormal];
-    [_mapTypeControl setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor lightGrayColor]}  forState:UIControlStateHighlighted];
-    [_mapTypeControl setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor lightGrayColor]}  forState:UIControlStateSelected];
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        // iOS 6.1 or earlier
+        [_mapTypeControl setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor whiteColor]} forState:UIControlStateNormal];
+        [_mapTypeControl setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor lightGrayColor]}  forState:UIControlStateHighlighted];
+        [_mapTypeControl setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor lightGrayColor]}  forState:UIControlStateSelected];
+    } else {
+        //iOS 7 or later
+        _mapTypeControl.backgroundColor = [UIColor lightGrayColor];
+    }
+    
+    
     
 }
 
