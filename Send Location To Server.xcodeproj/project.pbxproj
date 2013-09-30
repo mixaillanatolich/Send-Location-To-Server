@@ -63,6 +63,7 @@
 		057655BE17820E1A00720EB7 /* SLRequestFormatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057655BD17820E1A00720EB7 /* SLRequestFormatViewController.m */; };
 		059CCFB617A0562700BA2251 /* icon_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CCFB517A0562700BA2251 /* icon_114x114.png */; };
 		059CCFB817A0565300BA2251 /* icon_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CCFB717A0565300BA2251 /* icon_57x57.png */; };
+		05AB887C17F9EA5F00CAF6FF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05AB887B17F9EA5F00CAF6FF /* Security.framework */; };
 		05D378661776007900D0F730 /* SLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D378651776007900D0F730 /* SLConstants.m */; };
 		05D378691776035500D0F730 /* UserPosition.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D378671776035500D0F730 /* UserPosition.png */; };
 		05D3786A1776035500D0F730 /* UserPosition@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D378681776035500D0F730 /* UserPosition@2x.png */; };
@@ -163,6 +164,7 @@
 		057655BD17820E1A00720EB7 /* SLRequestFormatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRequestFormatViewController.m; sourceTree = "<group>"; };
 		059CCFB517A0562700BA2251 /* icon_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114x114.png; sourceTree = "<group>"; };
 		059CCFB717A0565300BA2251 /* icon_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57x57.png; sourceTree = "<group>"; };
+		05AB887B17F9EA5F00CAF6FF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		05D378641775FE5200D0F730 /* SLConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLConstants.h; sourceTree = "<group>"; };
 		05D378651776007900D0F730 /* SLConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLConstants.m; sourceTree = "<group>"; };
 		05D378671776035500D0F730 /* UserPosition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserPosition.png; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05AB887C17F9EA5F00CAF6FF /* Security.framework in Frameworks */,
 				0527CCF117665DF00065D19B /* MapKit.framework in Frameworks */,
 				0527CCEF176650330065D19B /* CoreTelephony.framework in Frameworks */,
 				0527CCCE176645B00065D19B /* CoreLocation.framework in Frameworks */,
@@ -246,6 +249,7 @@
 		0527CC7417663AB60065D19B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05AB887B17F9EA5F00CAF6FF /* Security.framework */,
 				0527CCF017665DF00065D19B /* MapKit.framework */,
 				0527CCEE176650330065D19B /* CoreTelephony.framework */,
 				0527CCCD176645B00065D19B /* CoreLocation.framework */,
