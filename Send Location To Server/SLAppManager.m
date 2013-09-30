@@ -165,6 +165,7 @@
         if (callback) {
             callback();
         }
+        return;
     }
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
