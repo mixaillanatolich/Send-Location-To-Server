@@ -10,7 +10,7 @@
 #import "SLAppManager.h"
 
 static CGFloat const kMinUpdateDistance = 5.f;
-static NSTimeInterval const kMinUpdateTime = 30.f;
+static NSTimeInterval const kMinUpdateTime = 5.f;
 static NSTimeInterval const kMaxTimeToLive = 30.f;
 
 @interface SLLocationManager () {
@@ -38,6 +38,9 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground) name:    UIApplicationDidEnterBackgroundNotification object:nil];
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
+        self.locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+        self.locationManager.distanceFilter = kMinUpdateDistance;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     }
     return self;
 }
@@ -58,6 +61,7 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
     [self.locationManager stopUpdatingLocation];
     if ([UserDefaults boolForKey:SEND_LOCATION_IN_BACKGROUND_SETTING]) {
         [self.locationManager startMonitoringSignificantLocationChanges];
+        [self.locationManager startUpdatingLocation];
     }
 }
 
@@ -65,7 +69,9 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
 
 - (void)startUpdatingLocation {
     [self stopUpdatingLocation];
-    [self isInBackground] ? ([UserDefaults boolForKey:SEND_LOCATION_IN_BACKGROUND_SETTING] ? [self.locationManager startMonitoringSignificantLocationChanges] : [self.locationManager stopMonitoringSignificantLocationChanges]) : [self.locationManager startUpdatingLocation];
+    [self.locationManager startMonitoringSignificantLocationChanges];
+    [self.locationManager startUpdatingLocation];
+    //[self isInBackground] ? ([UserDefaults boolForKey:SEND_LOCATION_IN_BACKGROUND_SETTING] ? [self.locationManager startMonitoringSignificantLocationChanges] : [self.locationManager stopMonitoringSignificantLocationChanges]) : [self.locationManager startUpdatingLocation];
 }
 
 - (void)stopUpdatingLocation {

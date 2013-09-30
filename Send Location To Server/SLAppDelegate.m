@@ -49,6 +49,10 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[UIApplication sharedApplication] setKeepAliveTimeout:600 handler:^{
+        NSLog(@"backgroud tick");
+        [[SLAppManager sharedManager] sendLocationToServer];
+    }];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

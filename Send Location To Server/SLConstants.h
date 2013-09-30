@@ -10,6 +10,7 @@ extern NSString * const UPDATE_LOCATION_NOTIFICATION;
 extern NSString * const SEND_LOCATION_NOTIFICATION;
 
 extern NSString * const SEND_LOCATION_ENABLED;
+extern NSString * const AGGRESSIVE_MODE;
 
 extern NSString * const SERVER_NAME_SETTING;
 extern NSString * const TYPE_OF_REQUEST_SETTING;

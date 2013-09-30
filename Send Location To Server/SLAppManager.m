@@ -40,10 +40,14 @@
             [UserDefaults setBool:YES forKey:SEND_LOCATION_IN_BACKGROUND_SETTING];
             [UserDefaults setBool:NO forKey:NOT_TURN_OFF_DISPLAY_SETTING];
             [UserDefaults setInteger:DEFAULT_LOGGIN_INTERVAL forKey:LOGGIN_INTERVAL_SETTING];
+            [UserDefaults setBool:NO forKey:AGGRESSIVE_MODE];
             
             [UserDefaults setBool:YES forKey:NOT_FIRST_START];
             [UserDefaults synchronize];
         }
+        
+#warning debug
+        [UserDefaults setBool:YES forKey:AGGRESSIVE_MODE];
         
         [[UIApplication sharedApplication] setIdleTimerDisabled:[UserDefaults boolForKey:NOT_TURN_OFF_DISPLAY_SETTING]];
         
