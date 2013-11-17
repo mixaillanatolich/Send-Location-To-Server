@@ -61,7 +61,6 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
     [self.locationManager stopUpdatingLocation];
     if ([UserDefaults boolForKey:SEND_LOCATION_IN_BACKGROUND_SETTING]) {
         [self.locationManager startMonitoringSignificantLocationChanges];
-        [self.locationManager startUpdatingLocation];
     }
 }
 
@@ -69,9 +68,7 @@ static NSTimeInterval const kMaxTimeToLive = 30.f;
 
 - (void)startUpdatingLocation {
     [self stopUpdatingLocation];
-    [self.locationManager startMonitoringSignificantLocationChanges];
-    [self.locationManager startUpdatingLocation];
-    //[self isInBackground] ? ([UserDefaults boolForKey:SEND_LOCATION_IN_BACKGROUND_SETTING] ? [self.locationManager startMonitoringSignificantLocationChanges] : [self.locationManager stopMonitoringSignificantLocationChanges]) : [self.locationManager startUpdatingLocation];
+    [self isInBackground] ? ([UserDefaults boolForKey:SEND_LOCATION_IN_BACKGROUND_SETTING] ? [self.locationManager startMonitoringSignificantLocationChanges] : [self.locationManager stopMonitoringSignificantLocationChanges]) : [self.locationManager startUpdatingLocation];
 }
 
 - (void)stopUpdatingLocation {

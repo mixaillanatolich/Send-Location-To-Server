@@ -45,10 +45,7 @@
             [UserDefaults setBool:YES forKey:NOT_FIRST_START];
             [UserDefaults synchronize];
         }
-        
-#warning debug
-        [UserDefaults setBool:YES forKey:AGGRESSIVE_MODE];
-        
+                
         [[UIApplication sharedApplication] setIdleTimerDisabled:[UserDefaults boolForKey:NOT_TURN_OFF_DISPLAY_SETTING]];
         
         self.locationManager = [SLLocationManager sharedManager];
